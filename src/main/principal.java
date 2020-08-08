@@ -232,7 +232,6 @@ public class principal extends javax.swing.JFrame {
         }
         //Añadir la query a la tabla tblDB
         String query="SELECT %s FROM %s %s";
-        System.out.println(String.format(query,columns, tableName,condition));
         tblDB.setModel(DbUtils.resultSetToTableModel(db.select(String.format(query,columns, tableName,condition))));
 
     }
@@ -292,6 +291,7 @@ public class principal extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     
+    //Devuelve la url dependiendo el sistema operativo
     private static String getUrl(){
         String OS = System.getProperty("os.name").toLowerCase();
         File f = new File("src/db/actly.db");
@@ -311,11 +311,6 @@ public class principal extends javax.swing.JFrame {
     
     
     public static void main(String args[]) {
-        //Extrayendo la ruta dependiendo del OS
-       
-        
-        
-        
         
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
