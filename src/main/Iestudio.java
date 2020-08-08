@@ -15,6 +15,7 @@ public class Iestudio extends javax.swing.JInternalFrame {
     /**
      * Creates new form Agendar
      */
+    
     String data;
     public Iestudio(String data) {
         this.data= data;
