@@ -33,19 +33,26 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jComboBox2" max="32767" attributes="0"/>
-                  <Component id="cboxClases" max="32767" attributes="0"/>
-                  <Component id="jComboBox3" alignment="0" max="32767" attributes="0"/>
-                  <Component id="jScrollPane1" alignment="0" pref="983" max="32767" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="342" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="325" max="-2" attributes="0"/>
               <Component id="jButton1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="cboxTemas" max="32767" attributes="0"/>
+                          <Component id="cboxClases" max="32767" attributes="0"/>
+                          <Component id="cboxSubtemas" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" pref="993" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -55,14 +62,14 @@
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Component id="cboxClases" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-              <Component id="jComboBox2" min="-2" max="-2" attributes="0"/>
+              <Component id="cboxTemas" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-              <Component id="jComboBox3" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <Component id="cboxSubtemas" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jButton1" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="341" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace pref="235" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -128,11 +135,14 @@
           </StringArray>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboxClasesActionPerformed"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JComboBox" name="jComboBox2">
+    <Component class="javax.swing.JComboBox" name="cboxTemas">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="1">
@@ -140,118 +150,24 @@
           </StringArray>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboxTemasActionPerformed"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JComboBox" name="jComboBox3">
+    <Component class="javax.swing.JComboBox" name="cboxSubtemas">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="101">
+          <StringArray count="1">
             <StringItem index="0" value="Subtemas"/>
-            <StringItem index="1" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="2" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="3" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="4" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="5" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="6" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="7" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="8" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="9" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="10" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="11" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="12" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="13" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="14" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="15" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="16" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="17" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="18" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="19" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="20" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="21" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="22" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="23" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="24" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="25" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="26" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="27" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="28" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="29" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="30" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="31" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="32" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="33" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="34" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="35" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="36" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="37" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="38" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="39" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="40" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="41" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="42" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="43" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="44" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="45" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="46" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="47" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="48" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="49" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="50" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="51" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="52" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="53" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="54" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="55" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="56" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="57" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="58" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="59" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="60" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="61" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="62" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="63" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="64" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="65" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="66" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="67" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="68" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="69" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="70" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="71" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="72" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="73" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="74" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="75" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="76" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="77" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="78" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="79" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="80" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="81" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="82" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="83" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="84" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="85" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="86" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="87" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="88" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="89" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="90" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="91" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="92" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="93" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="94" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="95" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="96" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="97" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="98" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="99" value="SDAFSDFASDFasfadfas"/>
-            <StringItem index="100" value="SDAFSDFASDFasfadfas"/>
           </StringArray>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboxSubtemasActionPerformed"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>

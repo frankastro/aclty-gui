@@ -24,6 +24,19 @@ public class principal extends javax.swing.JFrame {
     public Idesarrollo fDesarrollo;
     private Iestudio fEstudio;
     
+    
+    public JTable getTBLtemas(){
+        return tblDBtemas;
+    }
+    public JTable getTBLclases(){
+        return tblDBclases;
+    }
+    
+    public JTable getTBLsubtemas(){
+     return tblDBsubtemas;   
+    }
+//    public JTable tblSubtemas;
+//    public JTable tblSubtema;
     public principal() {
         db = new Sqlite(getUrl());
         initComponents();
@@ -43,11 +56,12 @@ public class principal extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jDesktopPane2 = new javax.swing.JDesktopPane();
         jPanel2 = new javax.swing.JPanel();
-        tblDB = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblDBtemas = new javax.swing.JTable();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDBclases = new javax.swing.JTable();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tblDBsubtemas = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -62,24 +76,15 @@ public class principal extends javax.swing.JFrame {
             }
         });
 
-        tblDB.setModel(new javax.swing.table.DefaultTableModel(
+        tblDBtemas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "IdTema", "IdClase", "Titulo", "Concepto", "ImgConcepto", "Pregunta", "ImgPregunta"
+                "Title 1", "Title 2"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, true, true, false, false, false, false, true
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tblDB.setEnabled(false);
-        tblDB.getTableHeader().setReorderingAllowed(false);
+        ));
+        jScrollPane2.setViewportView(tblDBtemas);
 
         tblDBclases.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -91,47 +96,40 @@ public class principal extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblDBclases);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        tblDBsubtemas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "null", "null", "null", "null", "null", "null", "null", "null"
+            }
+        ));
+        jScrollPane3.setViewportView(tblDBsubtemas);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(257, 688, Short.MAX_VALUE)
-                .addComponent(tblDB, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(557, 557, 557)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(180, 180, 180)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(557, 557, 557)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 131, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(198, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(tblDB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(226, 226, 226)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(520, 520, 520)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(12, 12, 12)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
         );
-
-        if (tblDB.getColumnModel().getColumnCount() > 0) {
-            tblDB.getColumnModel().getColumn(1).setHeaderValue("IdTema");
-            tblDB.getColumnModel().getColumn(3).setHeaderValue("Titulo");
-            tblDB.getColumnModel().getColumn(4).setHeaderValue("Concepto");
-            tblDB.getColumnModel().getColumn(5).setHeaderValue("ImgConcepto");
-            tblDB.getColumnModel().getColumn(6).setHeaderValue("Pregunta");
-            tblDB.getColumnModel().getColumn(7).setHeaderValue("ImgPregunta");
-        }
 
         jDesktopPane2.setLayer(jPanel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -203,36 +201,47 @@ public class principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        //Iniciar Base de Datos
         db.connect();
+        //Cargar las bases de datos a memoria por medio de tablas
+        //Cargar Clases 
+        String cClases[]={"id_clase","nombre_clase"};
+        this.extractColumns("clases", cClases, tblDBclases, "");
+        //Cargar Temas
+        String cTemas[]={"id_tema","nombre_tema"};
+        this.extractColumns("temas", cTemas, tblDBtemas, "");
+        //Los subtemas seran cargados desde la base de datos en tiempo de ejecución
+//        String cSubtemas[]={"id_subtema","titulo"};
+//        this.extractColumns("subtemas", cSubtemas, tblSubtemas,"");
     }//GEN-LAST:event_formWindowOpened
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         db.close();
     }//GEN-LAST:event_formWindowClosing
 
-    public String[][] extractColumns(String columName,JTable tblDB){
-        String query="SELECT * FROM %s";
-        String clases[][];
-        tblDB.setModel(DbUtils.resultSetToTableModel(db.select(String.format(query,columName))));
-        int numRows=tblDB.getRowCount();
-        clases= new String[numRows][2];
-        for(int c=0; c<numRows; c++){
-            for(int cc=0;cc<2; cc++){
-                clases[c][cc]=tblDB.getValueAt(c,cc).toString();
-            }
+ 
+    public void extractColumns(String tableName, String Columns[],JTable tblDB, String condition){
+        //Extraer las columnas
+        String columns="";
+        for(int c=0; c<Columns.length; c++){
+            if(c!=Columns.length-1)
+                columns+=Columns[c]+", " ;
+            else
+                columns+=Columns[c];
             
         }
-        return clases;
+        //Añadir la query a la tabla tblDB
+        String query="SELECT %s FROM %s %s";
+        System.out.println(String.format(query,columns, tableName,condition));
+        tblDB.setModel(DbUtils.resultSetToTableModel(db.select(String.format(query,columns, tableName,condition))));
+
     }
     
+    
     private void jMenu1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MousePressed
-        String clases[][]=extractColumns("clases",this.tblDBclases);
+//        String clases[][]=extractColumns("clases",this.tblDBclases);
 
-        
-        
-        
-        
-        fAgendar = new Iagendar(this, db, clases);
+        fAgendar = new Iagendar(this, db);
         ((javax.swing.plaf.basic.BasicInternalFrameUI)fAgendar.getUI()).setNorthPane(null);
         fAgendar.show();
         this.jDesktopPane1.add(fAgendar);
@@ -356,8 +365,9 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTable tblDB;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable tblDBclases;
+    private javax.swing.JTable tblDBsubtemas;
+    private javax.swing.JTable tblDBtemas;
     // End of variables declaration//GEN-END:variables
 }
