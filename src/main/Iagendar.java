@@ -11,6 +11,7 @@ package main;
  * @author NoeOGM
  */
 import java.beans.PropertyVetoException;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -25,6 +26,8 @@ public class Iagendar extends javax.swing.JInternalFrame {
     private Sqlite db; 
     private int indexClase;
     private int indexTema;
+    private String idSubtema;
+            
     public Iagendar(principal fmain, Sqlite db) {
         this.fmain= fmain;
         this.db= db;
@@ -51,6 +54,8 @@ public class Iagendar extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        Fecha = new com.toedter.calendar.JDateChooser();
+        jLabel4 = new javax.swing.JLabel();
 
         setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         setPreferredSize(new java.awt.Dimension(1019, 532));
@@ -74,14 +79,14 @@ public class Iagendar extends javax.swing.JInternalFrame {
 
         tblActividades.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Test", "Test", "Test"}
+                {null, "Test", "Test", "Test"}
             },
             new String [] {
-                "Tema", "Asignatura", "Fecha"
+                "idSubtema", "Tema", "Asignatura", "Fecha"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -97,6 +102,11 @@ public class Iagendar extends javax.swing.JInternalFrame {
             }
         });
         jScrollPane1.setViewportView(tblActividades);
+        if (tblActividades.getColumnModel().getColumnCount() > 0) {
+            tblActividades.getColumnModel().getColumn(0).setMinWidth(0);
+            tblActividades.getColumnModel().getColumn(0).setPreferredWidth(0);
+            tblActividades.getColumnModel().getColumn(0).setMaxWidth(0);
+        }
 
         cboxClases.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,6 +139,8 @@ public class Iagendar extends javax.swing.JInternalFrame {
 
         jLabel3.setText("Subtemas");
 
+        jLabel4.setText("Escoja Fecha de la Actividad -->");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -139,28 +151,29 @@ public class Iagendar extends javax.swing.JInternalFrame {
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 993, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(68, 68, 68)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(325, 325, 325)
-                                .addComponent(jButton1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(cboxSubtemas, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(cboxTemas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(cboxClases, javax.swing.GroupLayout.PREFERRED_SIZE, 779, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addComponent(Fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(168, 168, 168))
+                            .addComponent(cboxSubtemas, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cboxTemas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cboxClases, 0, 854, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cboxClases, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
@@ -172,11 +185,15 @@ public class Iagendar extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cboxSubtemas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 23, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE)
+                .addGap(18, 18, 18))
         );
 
         pack();
@@ -224,7 +241,7 @@ public class Iagendar extends javax.swing.JInternalFrame {
              int indexTblSubtemas = fmain.getTBLsubtemas().getRowCount();
 
             for(int c=0; c<indexTblSubtemas; c++){
-                this.cboxSubtemas.addItem(fmain.getTBLsubtemas().getValueAt(c,1).toString());
+                this.cboxSubtemas.addItem(fmain.getTBLsubtemas().getValueAt(c,3).toString());
             }
         
         
@@ -254,21 +271,27 @@ public class Iagendar extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cboxClasesActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String fecha = "20/08/2020";
-        String idSubtema= fmain.getTBLsubtemas().getValueAt(this.cboxSubtemas.getSelectedIndex(),0).toString();
-        String preQuery= "INSERT INTO actividades(fecha, id_subtema) VALUES(%s,%s)";
+//        String fecha = "20/08/2020";
+        SimpleDateFormat Forma = new SimpleDateFormat("dd-MM-yyyy");
+        String fecha = Forma.format(Fecha.getDate());
+        
+        idSubtema= fmain.getTBLsubtemas().getValueAt(this.cboxSubtemas.getSelectedIndex(),0).toString();
+        
+        String preQuery= "INSERT INTO actividades(fecha, id_subtema) VALUES(\'%s\',%s)";
         String query= String.format(preQuery,fecha,idSubtema);
+        System.out.println(query);
         db.setQuery(query);
         
         //Mostrar Subtema Recien Añadido
         String titulo = (String) this.cboxSubtemas.getSelectedItem();
         String clase = (String) this.cboxClases.getSelectedItem();
-        model.addRow(new Object[]{titulo,fecha, clase});
+        model.addRow(new Object[]{idSubtema, titulo,clase,fecha});
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.toedter.calendar.JDateChooser Fecha;
     private javax.swing.JComboBox<String> cboxClases;
     private javax.swing.JComboBox<String> cboxSubtemas;
     private javax.swing.JComboBox<String> cboxTemas;
@@ -276,6 +299,7 @@ public class Iagendar extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblActividades;
     // End of variables declaration//GEN-END:variables
