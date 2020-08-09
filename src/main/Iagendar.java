@@ -211,11 +211,20 @@ public class Iagendar extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tblActividadesMouseClicked
 
     private void tblActividadesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblActividadesMousePressed
+        //Cargando los datos del tema a estudiar
+        //Buscando los datos por id del tema a estudiar
+        int rowSelected= this.tblActividades.getSelectedRow();
+        String actIdSubtema= (String)this.tblActividades.getValueAt(rowSelected, 0);
+        //Rellenando los datos del subtema en la tblSubtema
+        String columns[]={"*"};
+        fmain.extractColumns("subtemas", columns, fmain.getTBLsubtema(),"WHERE id_subtema="+actIdSubtema);
+        
+        //Mostrar los datos recien añadidos en la tblActividades
         int row, col;
         row=this.tblActividades.getSelectedRow();
         col=this.tblActividades.getSelectedColumn();
         String data =this.tblActividades.getValueAt(row,col).toString();
-        Iestudio fEstudio = new Iestudio(data);
+        Iestudio fEstudio = new Iestudio(fmain);
         fmain.addInternal(fEstudio);        
     }//GEN-LAST:event_tblActividadesMousePressed
 

@@ -35,6 +35,10 @@ public class principal extends javax.swing.JFrame {
     public JTable getTBLsubtemas(){
      return tblDBsubtemas;   
     }
+    
+    public JTable getTBLsubtema(){
+        return tblDBsubtema;
+    }
 //    public JTable tblSubtemas;
 //    public JTable tblSubtema;
     public principal() {
@@ -113,18 +117,10 @@ public class principal extends javax.swing.JFrame {
 
             },
             new String [] {
-                "null", "null", "null", "null", "null", "null", "null", "null"
+                "idSubtema", "idTema", "idClase", "Titulo", "Concepto", "imgConcepto", "Pregunta", "imgPregunta"
             }
         ));
         jScrollPane4.setViewportView(tblDBsubtema);
-        if (tblDBsubtema.getColumnModel().getColumnCount() > 0) {
-            tblDBsubtema.getColumnModel().getColumn(2).setHeaderValue("null");
-            tblDBsubtema.getColumnModel().getColumn(3).setHeaderValue("null");
-            tblDBsubtema.getColumnModel().getColumn(4).setHeaderValue("null");
-            tblDBsubtema.getColumnModel().getColumn(5).setHeaderValue("null");
-            tblDBsubtema.getColumnModel().getColumn(6).setHeaderValue("null");
-            tblDBsubtema.getColumnModel().getColumn(7).setHeaderValue("null");
-        }
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
