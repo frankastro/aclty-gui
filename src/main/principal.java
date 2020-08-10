@@ -24,7 +24,9 @@ public class principal extends javax.swing.JFrame {
     public Idesarrollo fDesarrollo;
     private Iestudio fEstudio;
     
-    
+    public JTable getTBLactividades(){
+        return tblDBactividades;
+    }
     public JTable getTBLtemas(){
         return tblDBtemas;
     }
@@ -38,6 +40,15 @@ public class principal extends javax.swing.JFrame {
     
     public JTable getTBLsubtema(){
         return tblDBsubtema;
+    }
+    
+    public String extractColumn(String table,String column, String condition){
+        JTable tmp = new JTable();
+        String [] arrCol= {column};
+        String celd;
+        extractColumns(table, arrCol,tmp, condition );
+        celd= tmp.getValueAt(0,0).toString();
+        return celd;
     }
 //    public JTable tblSubtemas;
 //    public JTable tblSubtema;
@@ -60,14 +71,16 @@ public class principal extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jDesktopPane2 = new javax.swing.JDesktopPane();
         jPanel2 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        scpnTemas = new javax.swing.JScrollPane();
         tblDBtemas = new javax.swing.JTable();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        scpnClases = new javax.swing.JScrollPane();
         tblDBclases = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblDBsubtemas = new javax.swing.JTable();
         jScrollPane4 = new javax.swing.JScrollPane();
         tblDBsubtema = new javax.swing.JTable();
+        scpnActividades = new javax.swing.JScrollPane();
+        tblDBactividades = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -90,17 +103,17 @@ public class principal extends javax.swing.JFrame {
                 "Title 1", "Title 2"
             }
         ));
-        jScrollPane2.setViewportView(tblDBtemas);
+        scpnTemas.setViewportView(tblDBtemas);
 
         tblDBclases.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Title 1", "Title 2"
+                "IdCLase", "Nombre"
             }
         ));
-        jScrollPane1.setViewportView(tblDBclases);
+        scpnClases.setViewportView(tblDBclases);
 
         tblDBsubtemas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -122,6 +135,16 @@ public class principal extends javax.swing.JFrame {
         ));
         jScrollPane4.setViewportView(tblDBsubtema);
 
+        tblDBactividades.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "idAct", "fecha", "idSubtema", "Recordatorio"
+            }
+        ));
+        scpnActividades.setViewportView(tblDBactividades);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -134,13 +157,18 @@ public class principal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(557, 557, 557)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(scpnClases, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 206, Short.MAX_VALUE)))
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(scpnTemas, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(97, 97, 97))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(97, 97, 97))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(scpnActividades, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(59, 59, 59))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,12 +176,14 @@ public class principal extends javax.swing.JFrame {
                 .addGap(508, 508, 508)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(scpnClases, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(scpnTemas, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(192, 192, 192))
+                .addGap(91, 91, 91)
+                .addComponent(scpnActividades, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(101, 101, 101))
         );
 
         jDesktopPane2.setLayer(jPanel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -236,8 +266,9 @@ public class principal extends javax.swing.JFrame {
         String cTemas[]={"id_tema","nombre_tema"};
         this.extractColumns("temas", cTemas, tblDBtemas, "");
         //Los subtemas seran cargados desde la base de datos en tiempo de ejecución
-//        String cSubtemas[]={"id_subtema","titulo"};
-//        this.extractColumns("subtemas", cSubtemas, tblSubtemas,"");
+        //Cargar las activades
+        String cActividades[] = {"*"};
+        this.extractColumns("actividades", cActividades, tblDBactividades, "");
     }//GEN-LAST:event_formWindowOpened
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
@@ -383,10 +414,12 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane scpnActividades;
+    private javax.swing.JScrollPane scpnClases;
+    private javax.swing.JScrollPane scpnTemas;
+    private javax.swing.JTable tblDBactividades;
     private javax.swing.JTable tblDBclases;
     private javax.swing.JTable tblDBsubtema;
     private javax.swing.JTable tblDBsubtemas;

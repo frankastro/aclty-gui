@@ -25,8 +25,7 @@ public class Iestudio extends javax.swing.JInternalFrame {
 //        imgConcepto = (String)fmain.getTBLsubtema().getValueAt(0,5);
           String pathImages="images/";
           imgConcepto = pathImages+"bg_blanco.png";
-          System.out.println(imgConcepto);
-        initComponents();
+          initComponents();
         //Extraer ruta de la imagen desde la base de datos
         
         //Extraer el id del subtema desde el Iagendar por medio del constructor
@@ -200,7 +199,7 @@ public class Iestudio extends javax.swing.JInternalFrame {
         txtaConcepto.setText((String)fmain.getTBLsubtema().getValueAt(0,3)+"\n\n"+(String)fmain.getTBLsubtema().getValueAt(0,4));
         
         //Extraer pregunta
-        
+        //Eliminar la segunda inicializacion de dataPRegunta
         String dataPregunta= (String)fmain.getTBLsubtema().getValueAt(0,6);
         dataPregunta="lkjaslkdjflasdfl;asjdfalsd\n"
                 + "opt1;alksjdfla\n"
