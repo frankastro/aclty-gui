@@ -1,5 +1,8 @@
 package main;
 
+import java.awt.Image;
+
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -11,13 +14,20 @@ package main;
  * @author NoeOGM
  */
 public class Iestudio extends javax.swing.JInternalFrame {
-
-    String imgConcepto;    
+    
+    String imgConcepto; 
+    Image img;
     String idSubtema;
-    public Iestudio(String idSubtema) {
-        this.idSubtema= idSubtema;
-        initComponents();
+    principal fmain;
+    public Iestudio(principal fmain) {
+        this.fmain= fmain;
+        //Extraer la imagen del Concepto
+//        imgConcepto = (String)fmain.getTBLsubtema().getValueAt(0,5);
+          String pathImages="images/";
+          imgConcepto = pathImages+"bg_blanco.png";
+          initComponents();
         //Extraer ruta de la imagen desde la base de datos
+        
         //Extraer el id del subtema desde el Iagendar por medio del constructor
         
     }
@@ -34,9 +44,15 @@ public class Iestudio extends javax.swing.JInternalFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        panImgConcept = new javax.swing.JPanel();
+        txtaConcepto = new javax.swing.JTextArea();
+        panImgConcept = new background(this.imgConcepto);
         jPanel2 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtaPregunta = new javax.swing.JTextArea();
+        pnlImgPreg = new javax.swing.JPanel();
+        rbtnOpt1 = new javax.swing.JRadioButton();
+        rbtnOpt2 = new javax.swing.JRadioButton();
+        rbtnOpt3 = new javax.swing.JRadioButton();
 
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
@@ -56,10 +72,10 @@ public class Iestudio extends javax.swing.JInternalFrame {
             }
         });
 
-        jTextArea1.setBackground(java.awt.Color.lightGray);
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        txtaConcepto.setBackground(java.awt.Color.lightGray);
+        txtaConcepto.setColumns(20);
+        txtaConcepto.setRows(5);
+        jScrollPane1.setViewportView(txtaConcepto);
 
         javax.swing.GroupLayout panImgConceptLayout = new javax.swing.GroupLayout(panImgConcept);
         panImgConcept.setLayout(panImgConceptLayout);
@@ -97,15 +113,63 @@ public class Iestudio extends javax.swing.JInternalFrame {
 
         jTabbedPane1.addTab(" ", jPanel1);
 
+        txtaPregunta.setBackground(java.awt.Color.lightGray);
+        txtaPregunta.setColumns(20);
+        txtaPregunta.setRows(5);
+        jScrollPane2.setViewportView(txtaPregunta);
+
+        javax.swing.GroupLayout pnlImgPregLayout = new javax.swing.GroupLayout(pnlImgPreg);
+        pnlImgPreg.setLayout(pnlImgPregLayout);
+        pnlImgPregLayout.setHorizontalGroup(
+            pnlImgPregLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+        pnlImgPregLayout.setVerticalGroup(
+            pnlImgPregLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 201, Short.MAX_VALUE)
+        );
+
+        rbtnOpt1.setText("Opcion 1");
+
+        rbtnOpt2.setText("Opcion 2");
+
+        rbtnOpt3.setText("Opcion 3");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 690, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(77, 77, 77)
+                .addComponent(jScrollPane2)
+                .addGap(68, 68, 68))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(185, 185, 185)
+                        .addComponent(pnlImgPreg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(rbtnOpt3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(rbtnOpt1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(rbtnOpt2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(376, 376, 376)))
+                .addGap(205, 205, 205))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 477, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlImgPreg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addComponent(rbtnOpt1)
+                .addGap(18, 18, 18)
+                .addComponent(rbtnOpt2)
+                .addGap(18, 18, 18)
+                .addComponent(rbtnOpt3)
+                .addGap(49, 49, 49))
         );
 
         jTabbedPane1.addTab(" ", jPanel2);
@@ -130,7 +194,27 @@ public class Iestudio extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void start(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_start
-//        this.jTabbedPane1.setTitleAt(0, data);
+    //Extraer titulo     
+    //Extraer el concepto
+        txtaConcepto.setText((String)fmain.getTBLsubtema().getValueAt(0,3)+"\n\n"+(String)fmain.getTBLsubtema().getValueAt(0,4));
+        
+        //Extraer pregunta
+        //Eliminar la segunda inicializacion de dataPRegunta
+        String dataPregunta= (String)fmain.getTBLsubtema().getValueAt(0,6);
+        dataPregunta="lkjaslkdjflasdfl;asjdfalsd\n"
+                + "opt1;alksjdfla\n"
+                + "opt2lkjalsjdflajsdlfja\n"
+                + "opt3ljljsdlkfasd\n";
+        String lines[] = dataPregunta.split("\\r?\\n");
+        String pregunta=lines[0];
+        String opt1=lines[1];
+        String opt2=lines[2];
+        String opt3=lines[3];
+        this.txtaPregunta.setText(pregunta);
+        this.rbtnOpt1.setText(opt1);
+        this.rbtnOpt2.setText(opt2);
+        this.rbtnOpt3.setText(opt3);
+
     }//GEN-LAST:event_start
 
 
@@ -138,8 +222,14 @@ public class Iestudio extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JPanel panImgConcept;
+    private javax.swing.JPanel pnlImgPreg;
+    private javax.swing.JRadioButton rbtnOpt1;
+    private javax.swing.JRadioButton rbtnOpt2;
+    private javax.swing.JRadioButton rbtnOpt3;
+    private javax.swing.JTextArea txtaConcepto;
+    private javax.swing.JTextArea txtaPregunta;
     // End of variables declaration//GEN-END:variables
 }

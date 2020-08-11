@@ -23,8 +23,16 @@ public class background  extends javax.swing.JPanel{
     public background(String resource){
         this.resource= resource;
     }
+    
+    public background(Image img){
+        this.img= img;
+        
+    }
     public void paint(Graphics g){
-        img = new ImageIcon(getClass().getResource(resource)).getImage();
+        if(img==null){
+            img = new ImageIcon(getClass().getResource(resource)).getImage();
+        }
+        
         g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
         setOpaque(false);
         super.paint(g);
