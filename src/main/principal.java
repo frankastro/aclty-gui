@@ -288,6 +288,7 @@ public class principal extends javax.swing.JFrame {
         }
         //Añadir la query a la tabla tblDB
         String query="SELECT %s FROM %s %s";
+        System.out.println(String.format(query,columns, tableName,condition));
         tblDB.setModel(DbUtils.resultSetToTableModel(db.select(String.format(query,columns, tableName,condition))));
 
     }

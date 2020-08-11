@@ -50,7 +50,7 @@ public class Iagendar extends javax.swing.JInternalFrame {
         cboxClases = new javax.swing.JComboBox<>();
         cboxTemas = new javax.swing.JComboBox<>();
         cboxSubtemas = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        btnAgendar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -117,10 +117,10 @@ public class Iagendar extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton1.setText("Agendar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnAgendar.setText("Agendar");
+        btnAgendar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnAgendarActionPerformed(evt);
             }
         });
 
@@ -152,7 +152,7 @@ public class Iagendar extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(Fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnAgendar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(168, 168, 168))
                             .addComponent(cboxSubtemas, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cboxTemas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -178,7 +178,7 @@ public class Iagendar extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnAgendar, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(Fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(24, 24, 24)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 416, Short.MAX_VALUE)
@@ -215,7 +215,7 @@ public class Iagendar extends javax.swing.JInternalFrame {
         
         //Cargar actividades anteriores
         int numActividades = fmain.getTBLactividades().getRowCount();
-        System.out.println("NumActs:"+numActividades);
+        
         int numClases= fmain.getTBLclases().getRowCount();
         for(int c= 0; c<numActividades; c++){
             int idSubtema= (int)fmain.getTBLactividades().getValueAt(c, 2);
@@ -233,7 +233,7 @@ public class Iagendar extends javax.swing.JInternalFrame {
                     break;
                 }
             }
-            model.addRow(new Object[]{"",tema,clase, fecha});    
+            model.addRow(new Object[]{idSubtema,tema,clase, fecha});    
 
             
             
@@ -242,7 +242,7 @@ public class Iagendar extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_formInternalFrameOpened
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnAgendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgendarActionPerformed
         SimpleDateFormat Forma = new SimpleDateFormat("dd-MM-yyyy");
         String fecha = Forma.format(Fecha.getDate());
         
@@ -257,7 +257,7 @@ public class Iagendar extends javax.swing.JInternalFrame {
         String clase = (String) this.cboxClases.getSelectedItem();
         model.addRow(new Object[]{idSubtema, titulo,clase,fecha});
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnAgendarActionPerformed
 
     private void cboxClasesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboxClasesItemStateChanged
         //Limpiar cboxTemas (Por si tiene temas de otras clases)
@@ -316,10 +316,10 @@ public class Iagendar extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser Fecha;
+    private javax.swing.JButton btnAgendar;
     private javax.swing.JComboBox<String> cboxClases;
     private javax.swing.JComboBox<String> cboxSubtemas;
     private javax.swing.JComboBox<String> cboxTemas;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
