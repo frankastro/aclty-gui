@@ -7,6 +7,9 @@ package main;
 
 import java.beans.PropertyVetoException;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JTable;
@@ -255,6 +258,28 @@ public class principal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void copy(File origen, File destino){
+        try{
+            FileInputStream in = new FileInputStream(origen);
+            FileOutputStream out = new FileOutputStream(destino);
+            byte[] buf = new byte[1024];
+            int len;
+
+            while ((len = in.read(buf)) > 0) {
+              out.write(buf, 0, len);
+            }
+            in.close();
+            out.close();
+            
+        }catch(Exception e){
+            System.out.println(e.getMessage().toString());
+        
+    }
+        
+    }
+    
+    
+    
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         //Iniciar Base de Datos
         db.connect();
@@ -288,7 +313,6 @@ public class principal extends javax.swing.JFrame {
         }
         //Añadir la query a la tabla tblDB
         String query="SELECT %s FROM %s %s";
-        System.out.println(String.format(query,columns, tableName,condition));
         tblDB.setModel(DbUtils.resultSetToTableModel(db.select(String.format(query,columns, tableName,condition))));
 
     }
@@ -313,7 +337,7 @@ public class principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu1MousePressed
 
     private void jMenu2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MousePressed
-        fDesarrollo = new Idesarrollo(db);
+        fDesarrollo = new Idesarrollo(db, this);
         ((javax.swing.plaf.basic.BasicInternalFrameUI)fDesarrollo.getUI()).setNorthPane(null);
         fDesarrollo.show();
         this.jDesktopPane1.add(fDesarrollo);
