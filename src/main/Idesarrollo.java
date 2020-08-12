@@ -13,6 +13,7 @@ package main;
  */
 import java.io.File;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import sqlite.Sqlite;
 public class Idesarrollo extends javax.swing.JInternalFrame {
 
@@ -20,10 +21,15 @@ public class Idesarrollo extends javax.swing.JInternalFrame {
      * Creates new form Idesarrollo
      */
     private Sqlite db;
+    private principal fmain;
+    private String idClase;
+    private String idTema;
     
-    public Idesarrollo(Sqlite db) {
+    public Idesarrollo(Sqlite db, principal fmain) {
         this.db = db;
+        this.fmain = fmain;
         initComponents();
+        
     }
 
     /**
@@ -37,7 +43,7 @@ public class Idesarrollo extends javax.swing.JInternalFrame {
 
         jLabel1 = new javax.swing.JLabel();
         txtfNombreClase = new javax.swing.JTextField();
-        btnComenzarCrear = new javax.swing.JButton();
+        addClase = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         panSubtema = new javax.swing.JPanel();
@@ -45,35 +51,46 @@ public class Idesarrollo extends javax.swing.JInternalFrame {
         txtfConcepto = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        txtfPath = new javax.swing.JTextField();
+        btnAddImgConcepto = new javax.swing.JButton();
+        txtfPathImgConcepto = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         txtfSubtema = new javax.swing.JTextField();
         panEvaluacion = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        txtfPregunta = new javax.swing.JTextArea();
         jLabel3 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        btnAddImgPregunta = new javax.swing.JButton();
+        txtfPathImgPregunta = new javax.swing.JTextField();
         jButton4 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jRadioButton1 = new javax.swing.JRadioButton();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        txtfOpt1 = new javax.swing.JTextField();
+        txtfOpt2 = new javax.swing.JTextField();
         jRadioButton2 = new javax.swing.JRadioButton();
-        jTextField5 = new javax.swing.JTextField();
+        txtfOpt3 = new javax.swing.JTextField();
         jRadioButton3 = new javax.swing.JRadioButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
-        txtfTema = new javax.swing.JTextField();
         btnAñadirTema = new javax.swing.JButton();
+        btnEditarClase = new javax.swing.JButton();
+        btnAddTema = new javax.swing.JButton();
+        btnEditarTema = new javax.swing.JButton();
+        txtfTema = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
 
         jLabel1.setText("Nombre de la Clase");
 
-        btnComenzarCrear.setText("Comenzar A Crear");
+        addClase.setText("+");
+        addClase.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addClaseActionPerformed(evt);
+            }
+        });
 
         txtfConcepto.setColumns(20);
         txtfConcepto.setRows(5);
@@ -81,12 +98,14 @@ public class Idesarrollo extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Concepto");
 
-        jButton1.setText("Añadir Image");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnAddImgConcepto.setText("Añadir Imagen");
+        btnAddImgConcepto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnAddImgConceptoActionPerformed(evt);
             }
         });
+
+        txtfPathImgConcepto.setEditable(false);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -94,9 +113,9 @@ public class Idesarrollo extends javax.swing.JInternalFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addComponent(jButton1)
+                .addComponent(btnAddImgConcepto)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtfPath, javax.swing.GroupLayout.DEFAULT_SIZE, 436, Short.MAX_VALUE)
+                .addComponent(txtfPathImgConcepto, javax.swing.GroupLayout.DEFAULT_SIZE, 436, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -104,8 +123,8 @@ public class Idesarrollo extends javax.swing.JInternalFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(89, 89, 89)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtfPath, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(txtfPathImgConcepto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAddImgConcepto))
                 .addContainerGap(42, Short.MAX_VALUE))
         );
 
@@ -150,13 +169,20 @@ public class Idesarrollo extends javax.swing.JInternalFrame {
 
         jTabbedPane1.addTab("Subtema", panSubtema);
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
+        txtfPregunta.setColumns(20);
+        txtfPregunta.setRows(5);
+        jScrollPane2.setViewportView(txtfPregunta);
 
         jLabel3.setText("Pregunta");
 
-        jButton3.setText("Añadir Imagen");
+        btnAddImgPregunta.setText("Añadir Imagen");
+        btnAddImgPregunta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddImgPreguntaActionPerformed(evt);
+            }
+        });
+
+        txtfPathImgPregunta.setEditable(false);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -164,9 +190,9 @@ public class Idesarrollo extends javax.swing.JInternalFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton3)
+                .addComponent(btnAddImgPregunta)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE)
+                .addComponent(txtfPathImgPregunta, javax.swing.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -174,8 +200,8 @@ public class Idesarrollo extends javax.swing.JInternalFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(44, 44, 44)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnAddImgPregunta)
+                    .addComponent(txtfPathImgPregunta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(61, Short.MAX_VALUE))
         );
 
@@ -197,15 +223,15 @@ public class Idesarrollo extends javax.swing.JInternalFrame {
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jRadioButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField2))
+                        .addComponent(txtfOpt1))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jRadioButton2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE))
+                        .addComponent(txtfOpt2, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jRadioButton3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)))
+                        .addComponent(txtfOpt3, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
@@ -214,15 +240,15 @@ public class Idesarrollo extends javax.swing.JInternalFrame {
                 .addGap(23, 23, 23)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jRadioButton1)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtfOpt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jRadioButton2)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtfOpt2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jRadioButton3)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtfOpt3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -239,16 +265,18 @@ public class Idesarrollo extends javax.swing.JInternalFrame {
                 .addComponent(jButton4)
                 .addContainerGap())
             .addGroup(panEvaluacionLayout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addGroup(panEvaluacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(55, 55, 55)
                 .addGroup(panEvaluacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 648, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel6)
+                    .addGroup(panEvaluacionLayout.createSequentialGroup()
+                        .addGroup(panEvaluacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(panEvaluacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 648, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(72, Short.MAX_VALUE))
         );
         panEvaluacionLayout.setVerticalGroup(
@@ -270,10 +298,11 @@ public class Idesarrollo extends javax.swing.JInternalFrame {
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panEvaluacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(panEvaluacionLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel6))
-                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(57, 57, 57)
+                        .addComponent(jLabel6)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(77, 77, 77)
                 .addComponent(jButton4)
                 .addContainerGap())
@@ -301,18 +330,10 @@ public class Idesarrollo extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel7.setText("Tema");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(65, 65, 65)
-                .addComponent(jLabel7)
-                .addGap(50, 50, 50)
-                .addComponent(txtfTema)
-                .addGap(60, 60, 60))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnAñadirTema)
@@ -322,15 +343,43 @@ public class Idesarrollo extends javax.swing.JInternalFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtfTema, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(31, 31, 31)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAñadirTema)
-                .addGap(0, 15, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
+
+        btnEditarClase.setText("Editar");
+        btnEditarClase.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarClaseActionPerformed(evt);
+            }
+        });
+
+        btnAddTema.setText("+");
+        btnAddTema.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddTemaActionPerformed(evt);
+            }
+        });
+
+        btnEditarTema.setText("Editar");
+        btnEditarTema.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarTemaActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setText("Tema");
+
+        jMenu1.setText("Crear");
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Editar");
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -342,12 +391,24 @@ public class Idesarrollo extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtfNombreClase)
                 .addGap(18, 18, 18)
-                .addComponent(btnComenzarCrear)
+                .addComponent(addClase)
+                .addGap(18, 18, 18)
+                .addComponent(btnEditarClase)
                 .addGap(71, 71, 71))
             .addGroup(layout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtfTema, javax.swing.GroupLayout.PREFERRED_SIZE, 532, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnAddTema)
+                .addGap(18, 18, 18)
+                .addComponent(btnEditarTema)
+                .addGap(71, 71, 71))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -356,8 +417,15 @@ public class Idesarrollo extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtfNombreClase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnComenzarCrear))
+                    .addComponent(addClase)
+                    .addComponent(btnEditarClase))
                 .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtfTema, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7)
+                    .addComponent(btnAddTema)
+                    .addComponent(btnEditarTema))
+                .addGap(23, 23, 23)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(41, 41, 41))
         );
@@ -366,38 +434,101 @@ public class Idesarrollo extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAñadirTemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAñadirTemaActionPerformed
-            String nombreClase= this.txtfNombreClase.getText();
-            String tema= this.txtfTema.getText();
-            String subtema= this.txtfSubtema.getText();
-            String concepto= this.txtfConcepto.getText();
-            String imagen;
+        File pathImg = new File("src/main/images");
+        String path = pathImg.getAbsolutePath();
+        
+        String subtema= this.txtfSubtema.getText();
+        String concepto= this.txtfConcepto.getText();
+        String pregunta= this.txtfPregunta.getText();
+        String imgConcepto= this.txtfPathImgConcepto.getText();
+        String imgPregunta= this.txtfPathImgPregunta.getText();
+        int idSubtema= Integer.valueOf(fmain.extractColumn("subtemas","id_tema","WHERE id_subtema= (SELECT max(id_subtema) FROM subtemas)"));
+        
+        //Formatear cadena para extraer la extension de imgConcepto e imgPregunta
+        String cImgExt= imgConcepto.substring(imgConcepto.lastIndexOf("."));
+        String pImgExt=imgPregunta.substring(imgPregunta.lastIndexOf("."));
+        
+        //Importar imagenes
+        
+        File destinoC= new File(path+"c"+String.valueOf(idSubtema+1)+cImgExt);
+        File origenC= new File(imgConcepto);
+        
+        File destinoP= new File(path+"r"+imgPregunta+ pImgExt);
+        File origenP= new File(imgConcepto);
+        
+        fmain.copy(origenC,destinoC);
+        fmain.copy(origenP, destinoP);
+        
+        //Path de la imagen accesible desde recursos
+        imgConcepto="images/c"+String.valueOf(idSubtema+1)+cImgExt;
+        imgPregunta="images/p"+String.valueOf(idSubtema+1)+pImgExt;
+        
+        if(subtema.equals("") || concepto.equals("") || pregunta.equals("")){
+            JOptionPane.showMessageDialog(null, "Campos Obligatorios Incompletos");
+        }else{
+            String preQuery="insert into subtemas ( id_tema, id_clase, titulo, concepto, pregunta, img_concepto, img_pregunta) values (\'%s\',\'%s\', \'%s\', \'%s\', \'%s\', \'%s\', \'%s\');";
+            String query= String.format(preQuery,idTema, idClase, subtema, concepto, pregunta, imgConcepto, imgPregunta);
+            db.setQuery(query );
+        }
             
-            
-            
-            
-            
-            String query= "IN";
-//            db.setQuery(query);
+        
             
 
     }//GEN-LAST:event_btnAñadirTemaActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnAddImgConceptoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddImgConceptoActionPerformed
         String imagen;
         JFileChooser chooser = new JFileChooser();
         chooser.showOpenDialog(null);
         File f = chooser.getSelectedFile();
         imagen = f.getAbsolutePath();
         System.out.println(imagen);
-        this.txtfPath.setText(imagen);
-    }//GEN-LAST:event_jButton1ActionPerformed
+        this.txtfPathImgConcepto.setText(imagen);
+    }//GEN-LAST:event_btnAddImgConceptoActionPerformed
+
+    private void addClaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addClaseActionPerformed
+        String addClase="insert into clases (nombre_clase) values ('"+ txtfNombreClase.getText() +"')";
+        db.setQuery(addClase);
+        idClase=fmain.extractColumn("clases","id_clase","WHERE id_clase= (SELECT max(id_clase) FROM clases)");
+        this.addClase.setEnabled(false);
+        this.txtfNombreClase.setEditable(false);
+    }//GEN-LAST:event_addClaseActionPerformed
+
+    private void btnEditarClaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarClaseActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEditarClaseActionPerformed
+
+    private void btnAddTemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddTemaActionPerformed
+        String tema= this.txtfTema.getText();
+        db.setQuery("insert into temas (nombre_tema, id_clase) values('"+ tema +"', "+ idClase+")");
+        idTema=fmain.extractColumn("temas","id_tema","WHERE id_tema= (SELECT max(id_tema) FROM temas)");
+        this.btnAddTema.setEnabled(false);
+        this.txtfTema.setEditable(false);
+    }//GEN-LAST:event_btnAddTemaActionPerformed
+
+    private void btnEditarTemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarTemaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEditarTemaActionPerformed
+
+    private void btnAddImgPreguntaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddImgPreguntaActionPerformed
+        String imagen;
+        JFileChooser chooser = new JFileChooser();
+        chooser.showOpenDialog(null);
+        File f = chooser.getSelectedFile();
+        imagen = f.getAbsolutePath();
+        System.out.println(imagen);
+        this.txtfPathImgPregunta.setText(imagen);
+    }//GEN-LAST:event_btnAddImgPreguntaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addClase;
+    private javax.swing.JButton btnAddImgConcepto;
+    private javax.swing.JButton btnAddImgPregunta;
+    private javax.swing.JButton btnAddTema;
     private javax.swing.JButton btnAñadirTema;
-    private javax.swing.JButton btnComenzarCrear;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btnEditarClase;
+    private javax.swing.JButton btnEditarTema;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -406,6 +537,9 @@ public class Idesarrollo extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
@@ -417,16 +551,16 @@ public class Idesarrollo extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JPanel panEvaluacion;
     private javax.swing.JPanel panSubtema;
     private javax.swing.JTextArea txtfConcepto;
     private javax.swing.JTextField txtfNombreClase;
-    private javax.swing.JTextField txtfPath;
+    private javax.swing.JTextField txtfOpt1;
+    private javax.swing.JTextField txtfOpt2;
+    private javax.swing.JTextField txtfOpt3;
+    private javax.swing.JTextField txtfPathImgConcepto;
+    private javax.swing.JTextField txtfPathImgPregunta;
+    private javax.swing.JTextArea txtfPregunta;
     private javax.swing.JTextField txtfSubtema;
     private javax.swing.JTextField txtfTema;
     // End of variables declaration//GEN-END:variables
