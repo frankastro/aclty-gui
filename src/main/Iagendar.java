@@ -283,8 +283,13 @@ public class Iagendar extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cboxTemasItemStateChanged
 
     private void formInternalFrameActivated(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameActivated
+        //Cargar Clases 
+        String colClases[]={"id_clase","nombre_clase"};
+        fmain.extractColumns("clases", colClases, fmain.getTBLclases(), "");
+        
         System.out.println("Metodo Internal Activado");
             //Cargar clases al cboxClases
+            this.cboxClases.removeAll();
         int cClases= fmain.getTBLclases().getRowCount();
         for(int c=0; c<cClases; c++){
             this.cboxClases.addItem(fmain.getTBLclases().getValueAt(c,1).toString());  
@@ -292,7 +297,6 @@ public class Iagendar extends javax.swing.JInternalFrame {
         
         //Cargar actividades anteriores
         int numActividades = fmain.getTBLactividades().getRowCount();
-        
         int numClases= fmain.getTBLclases().getRowCount();
         for(int c= 0; c<numActividades; c++){
             int idSubtema= (int)fmain.getTBLactividades().getValueAt(c, 2);

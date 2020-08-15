@@ -24,7 +24,7 @@ public class principal extends javax.swing.JFrame {
     
     public Sqlite db;
     public Iagendar fAgendar;
-    public Idesarrollo fDesarrollo;
+    public Icrear fDesarrollo;
     private Iestudio fEstudio;
     
     public JTable getTBLactividades(){
@@ -50,8 +50,16 @@ public class principal extends javax.swing.JFrame {
         String [] arrCol= {column};
         String celd;
         extractColumns(table, arrCol,tmp, condition );
-        celd= tmp.getValueAt(0,0).toString();
-        return celd;
+        int rows = tmp.getRowCount();
+        if(rows <=0){
+            System.out.println("Sin data");
+            return "0";
+        }else{
+            System.out.println("Con data");
+            celd= tmp.getValueAt(0,0).toString();
+            return celd;
+         }
+        
     }
 //    public JTable tblSubtemas;
 //    public JTable tblSubtema;
@@ -284,9 +292,7 @@ public class principal extends javax.swing.JFrame {
         //Iniciar Base de Datos
         db.connect();
         //Cargar las bases de datos a memoria por medio de tablas
-        //Cargar Clases 
-        String cClases[]={"id_clase","nombre_clase"};
-        this.extractColumns("clases", cClases, tblDBclases, "");
+        
         //Cargar Temas
         String cTemas[]={"id_tema","nombre_tema"};
         this.extractColumns("temas", cTemas, tblDBtemas, "");
@@ -332,12 +338,12 @@ public class principal extends javax.swing.JFrame {
             Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
         }
         //Para cerrar otros internals
-//         if(fDesarrollo!=null)
-//             this.fDesarrollo.dispose();
+         if(fDesarrollo!=null)
+             this.fDesarrollo.dispose();
     }//GEN-LAST:event_jMenu1MousePressed
 
     private void jMenu2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MousePressed
-        fDesarrollo = new Idesarrollo(db, this);
+        fDesarrollo = new Icrear(db, this);
         ((javax.swing.plaf.basic.BasicInternalFrameUI)fDesarrollo.getUI()).setNorthPane(null);
         fDesarrollo.show();
         this.jDesktopPane1.add(fDesarrollo);
@@ -347,9 +353,9 @@ public class principal extends javax.swing.JFrame {
         } catch (PropertyVetoException ex) { 
             Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
         }
-        //Para cerrar otros internals
-//         if(fAgendar!=null)
-//            this.fAgendar.dispose();
+//        Para cerrar otros internals
+         if(fAgendar!=null)
+            this.fAgendar.dispose();
     }//GEN-LAST:event_jMenu2MousePressed
 
     

@@ -25,6 +25,7 @@ public class Iestudio extends javax.swing.JInternalFrame {
         imgConcepto = fmain.getTBLsubtema().getValueAt(0,5).toString();
         imgPregunta = fmain.getTBLsubtema().getValueAt(0,7).toString();
         System.out.println(imgPregunta);
+        System.out.println("imgConcepto="+imgConcepto);
         initComponents();
         //Extraer ruta de la imagen desde la base de datos
         
