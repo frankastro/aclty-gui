@@ -12,6 +12,8 @@ package main;
  * @author fr4nk
  */
 import java.io.File;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import sqlite.Sqlite;
@@ -53,6 +55,7 @@ public class Idesarrollo extends javax.swing.JInternalFrame {
         jPanel3 = new javax.swing.JPanel();
         btnAddImgConcepto = new javax.swing.JButton();
         txtfPathImgConcepto = new javax.swing.JTextField();
+        lblImgPreview = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         txtfSubtema = new javax.swing.JTextField();
         panEvaluacion = new javax.swing.JPanel();
@@ -116,16 +119,21 @@ public class Idesarrollo extends javax.swing.JInternalFrame {
                 .addComponent(btnAddImgConcepto)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtfPathImgConcepto, javax.swing.GroupLayout.DEFAULT_SIZE, 436, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(424, 424, 424))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(237, 237, 237)
+                .addComponent(lblImgPreview, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(89, 89, 89)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblImgPreview, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtfPathImgConcepto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAddImgConcepto))
-                .addContainerGap(42, Short.MAX_VALUE))
+                    .addComponent(btnAddImgConcepto)))
         );
 
         jLabel5.setText("Titulo");
@@ -163,7 +171,7 @@ public class Idesarrollo extends javax.swing.JInternalFrame {
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)))
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 156, Short.MAX_VALUE)
                 .addGap(43, 43, 43))
         );
 
@@ -277,7 +285,7 @@ public class Idesarrollo extends javax.swing.JInternalFrame {
                             .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 648, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addContainerGap(345, Short.MAX_VALUE))
         );
         panEvaluacionLayout.setVerticalGroup(
             panEvaluacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -314,7 +322,7 @@ public class Idesarrollo extends javax.swing.JInternalFrame {
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 874, Short.MAX_VALUE)
+            .addGap(0, 1147, Short.MAX_VALUE)
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -434,9 +442,11 @@ public class Idesarrollo extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAñadirTemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAñadirTemaActionPerformed
-        File pathImg = new File("src/main/images");
+        //Path carpeta de las imagenes de las clases
+        File pathImg = new File("src/main/images/");
         String path = pathImg.getAbsolutePath();
         
+        //Extracción de los atributos
         String subtema= this.txtfSubtema.getText();
         String concepto= this.txtfConcepto.getText();
         String pregunta= this.txtfPregunta.getText();
@@ -444,20 +454,25 @@ public class Idesarrollo extends javax.swing.JInternalFrame {
         String imgPregunta= this.txtfPathImgPregunta.getText();
         int idSubtema= Integer.valueOf(fmain.extractColumn("subtemas","id_tema","WHERE id_subtema= (SELECT max(id_subtema) FROM subtemas)"));
         
-        //Formatear cadena para extraer la extension de imgConcepto e imgPregunta
-        String cImgExt= imgConcepto.substring(imgConcepto.lastIndexOf("."));
-        String pImgExt=imgPregunta.substring(imgPregunta.lastIndexOf("."));
+        String cImgExt= null;
+        String pImgExt= null;
         
-        //Importar imagenes
+        if(!imgConcepto.equals("")){
+            File origenC= new File(imgConcepto);
+            //Formatear cadena para extraer la extension de imgConcepto e imgPregunta
+            cImgExt= imgConcepto.substring(imgConcepto.lastIndexOf("."));
+            //Importar imagenes
+            File destinoC= new File(path+"/c"+String.valueOf(idSubtema+1)+cImgExt);
+            fmain.copy(origenC,destinoC);
+        }
+        if(!imgPregunta.equals("")){
+            pImgExt=imgPregunta.substring(imgPregunta.lastIndexOf("."));       
+            File destinoP= new File(path+"/p"+String.valueOf(idSubtema+1)+pImgExt);
+            File origenP= new File(imgConcepto);
+
+            fmain.copy(origenP, destinoP);
+        }
         
-        File destinoC= new File(path+"c"+String.valueOf(idSubtema+1)+cImgExt);
-        File origenC= new File(imgConcepto);
-        
-        File destinoP= new File(path+"r"+imgPregunta+ pImgExt);
-        File origenP= new File(imgConcepto);
-        
-        fmain.copy(origenC,destinoC);
-        fmain.copy(origenP, destinoP);
         
         //Path de la imagen accesible desde recursos
         imgConcepto="images/c"+String.valueOf(idSubtema+1)+cImgExt;
@@ -477,13 +492,14 @@ public class Idesarrollo extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnAñadirTemaActionPerformed
 
     private void btnAddImgConceptoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddImgConceptoActionPerformed
+        ImageIcon preview= new ImageIcon("images/p11.jpg");
         String imagen;
         JFileChooser chooser = new JFileChooser();
         chooser.showOpenDialog(null);
         File f = chooser.getSelectedFile();
         imagen = f.getAbsolutePath();
-        System.out.println(imagen);
         this.txtfPathImgConcepto.setText(imagen);
+        this.lblImgPreview.setIcon(preview);
     }//GEN-LAST:event_btnAddImgConceptoActionPerformed
 
     private void addClaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addClaseActionPerformed
@@ -516,7 +532,6 @@ public class Idesarrollo extends javax.swing.JInternalFrame {
         chooser.showOpenDialog(null);
         File f = chooser.getSelectedFile();
         imagen = f.getAbsolutePath();
-        System.out.println(imagen);
         this.txtfPathImgPregunta.setText(imagen);
     }//GEN-LAST:event_btnAddImgPreguntaActionPerformed
 
@@ -551,6 +566,7 @@ public class Idesarrollo extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JLabel lblImgPreview;
     private javax.swing.JPanel panEvaluacion;
     private javax.swing.JPanel panSubtema;
     private javax.swing.JTextArea txtfConcepto;

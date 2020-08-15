@@ -72,6 +72,7 @@ public class Iagendar extends javax.swing.JInternalFrame {
             public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
             }
             public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameActivated(evt);
             }
             public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
             }
@@ -207,39 +208,7 @@ public class Iagendar extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tblActividadesMousePressed
 
     private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
-        //Cargar clases al cboxClases
-        int cClases= fmain.getTBLclases().getRowCount();
-        for(int c=0; c<cClases; c++){
-            this.cboxClases.addItem(fmain.getTBLclases().getValueAt(c,1).toString());  
-        }
-        
-        //Cargar actividades anteriores
-        int numActividades = fmain.getTBLactividades().getRowCount();
-        
-        int numClases= fmain.getTBLclases().getRowCount();
-        for(int c= 0; c<numActividades; c++){
-            int idSubtema= (int)fmain.getTBLactividades().getValueAt(c, 2);
-            String fecha= fmain.getTBLactividades().getValueAt(c,1).toString();
-            //Extraer el nombre del subtema con idSubtema
-            String tema= fmain.extractColumn("subtemas", "titulo","WHERE id_subtema= "+idSubtema);
-            String clase = null;
-            int idClase= Integer.valueOf(fmain.extractColumn("subtemas", "id_clase","WHERE id_subtema= "+idSubtema));
-            
-            for(int cc=0; cc<numClases; cc++){
-                int currentId =(int)fmain.getTBLclases().getValueAt(cc,0);
-                
-                if(idClase == currentId){
-                    clase=fmain.getTBLclases().getValueAt(cc,1).toString();
-                    break;
-                }
-            }
-            model.addRow(new Object[]{idSubtema,tema,clase, fecha});    
-
-            
-            
-        }
-        
-        
+    
     }//GEN-LAST:event_formInternalFrameOpened
 
     private void btnAgendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgendarActionPerformed
@@ -313,6 +282,43 @@ public class Iagendar extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_cboxTemasItemStateChanged
 
+    private void formInternalFrameActivated(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameActivated
+        System.out.println("Metodo Internal Activado");
+            //Cargar clases al cboxClases
+        int cClases= fmain.getTBLclases().getRowCount();
+        for(int c=0; c<cClases; c++){
+            this.cboxClases.addItem(fmain.getTBLclases().getValueAt(c,1).toString());  
+        }
+        
+        //Cargar actividades anteriores
+        int numActividades = fmain.getTBLactividades().getRowCount();
+        
+        int numClases= fmain.getTBLclases().getRowCount();
+        for(int c= 0; c<numActividades; c++){
+            int idSubtema= (int)fmain.getTBLactividades().getValueAt(c, 2);
+            String fecha= fmain.getTBLactividades().getValueAt(c,1).toString();
+            //Extraer el nombre del subtema con idSubtema
+            String tema= fmain.extractColumn("subtemas", "titulo","WHERE id_subtema= "+idSubtema);
+            String clase = null;
+            int idClase= Integer.valueOf(fmain.extractColumn("subtemas", "id_clase","WHERE id_subtema= "+idSubtema));
+            
+            for(int cc=0; cc<numClases; cc++){
+                int currentId =(int)fmain.getTBLclases().getValueAt(cc,0);
+                
+                if(idClase == currentId){
+                    clase=fmain.getTBLclases().getValueAt(cc,1).toString();
+                    break;
+                }
+            }
+            model.addRow(new Object[]{idSubtema,tema,clase, fecha});    
+
+            
+            
+        }
+        
+        
+    }//GEN-LAST:event_formInternalFrameActivated
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser Fecha;
@@ -328,3 +334,4 @@ public class Iagendar extends javax.swing.JInternalFrame {
     private javax.swing.JTable tblActividades;
     // End of variables declaration//GEN-END:variables
 }
+

@@ -15,17 +15,17 @@ import java.awt.Image;
  */
 public class Iestudio extends javax.swing.JInternalFrame {
     
-    String imgConcepto; 
-    Image img;
+    String imgConcepto;
+    String imgPregunta;
     String idSubtema;
     principal fmain;
     public Iestudio(principal fmain) {
         this.fmain= fmain;
         //Extraer la imagen del Concepto
-//        imgConcepto = (String)fmain.getTBLsubtema().getValueAt(0,5);
-          String pathImages="images/";
-          imgConcepto = pathImages+"bg_blanco.png";
-          initComponents();
+        imgConcepto = fmain.getTBLsubtema().getValueAt(0,5).toString();
+        imgPregunta = fmain.getTBLsubtema().getValueAt(0,7).toString();
+        System.out.println(imgPregunta);
+        initComponents();
         //Extraer ruta de la imagen desde la base de datos
         
         //Extraer el id del subtema desde el Iagendar por medio del constructor
@@ -49,7 +49,7 @@ public class Iestudio extends javax.swing.JInternalFrame {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtaPregunta = new javax.swing.JTextArea();
-        pnlImgPreg = new javax.swing.JPanel();
+        pnlImgPreg = new background(this.imgPregunta);
         rbtnOpt1 = new javax.swing.JRadioButton();
         rbtnOpt2 = new javax.swing.JRadioButton();
         rbtnOpt3 = new javax.swing.JRadioButton();
@@ -85,7 +85,7 @@ public class Iestudio extends javax.swing.JInternalFrame {
         );
         panImgConceptLayout.setVerticalGroup(
             panImgConceptLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 248, Short.MAX_VALUE)
+            .addGap(0, 195, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -105,7 +105,7 @@ public class Iestudio extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(45, 45, 45)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
                 .addGap(29, 29, 29)
                 .addComponent(panImgConcept, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(26, 26, 26))
@@ -126,7 +126,7 @@ public class Iestudio extends javax.swing.JInternalFrame {
         );
         pnlImgPregLayout.setVerticalGroup(
             pnlImgPregLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 201, Short.MAX_VALUE)
+            .addGap(0, 157, Short.MAX_VALUE)
         );
 
         rbtnOpt1.setText("Opcion 1");
@@ -140,36 +140,35 @@ public class Iestudio extends javax.swing.JInternalFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(77, 77, 77)
-                .addComponent(jScrollPane2)
-                .addGap(68, 68, 68))
+                .addGap(185, 185, 185)
+                .addComponent(pnlImgPreg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(205, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(77, 77, 77)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(185, 185, 185)
-                        .addComponent(pnlImgPreg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(rbtnOpt3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(rbtnOpt1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(rbtnOpt2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(376, 376, 376)))
-                .addGap(205, 205, 205))
+                        .addContainerGap())
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jScrollPane2)
+                        .addGap(68, 68, 68))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlImgPreg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                .addComponent(rbtnOpt1)
+                .addComponent(pnlImgPreg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(rbtnOpt1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(rbtnOpt2)
                 .addGap(18, 18, 18)
-                .addComponent(rbtnOpt3)
-                .addGap(49, 49, 49))
+                .addComponent(rbtnOpt3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
         );
 
         jTabbedPane1.addTab(" ", jPanel2);
