@@ -1,5 +1,6 @@
 package main;
 
+import java.awt.Color;
 import java.awt.Image;
 
 
@@ -22,14 +23,32 @@ public class Iestudio extends javax.swing.JInternalFrame {
     public Iestudio(principal fmain) {
         this.fmain= fmain;
         //Extraer la imagen del Concepto
-        imgConcepto = fmain.getTBLsubtema().getValueAt(0,5).toString();
+        imgConcepto = fmain.getTBLsubtema().getValueAt(0,5).toString();        
         imgPregunta = fmain.getTBLsubtema().getValueAt(0,7).toString();
-        System.out.println(imgPregunta);
-        System.out.println("imgConcepto="+imgConcepto);
-        initComponents();
-        //Extraer ruta de la imagen desde la base de datos
         
-        //Extraer el id del subtema desde el Iagendar por medio del constructor
+        System.out.println("ImgConcept=" + imgConcepto +"\n Se detecto como vacía" );
+        if(imgConcepto.equals("")){
+           imgConcepto="images/default.png";
+        }
+        
+       System.out.println("ImgPregunta=" + imgPregunta +"\n Se detecto como vacía" );
+        if(imgPregunta.equals("")){
+             imgPregunta="images/default.png";
+
+        }
+        
+        
+        
+        
+        initComponents();
+        
+        if(imgConcepto.equals("images/default.png")){
+            this.panImgConcept.setVisible(false);
+        }
+            
+        if(imgPregunta.equals("images/default.png")){
+                this.pnlImgPreg.setVisible(false);
+        }
         
     }
 

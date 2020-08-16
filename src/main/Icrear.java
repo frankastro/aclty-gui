@@ -192,9 +192,9 @@ public class Icrear extends javax.swing.JInternalFrame {
                         .addComponent(jLabel2))
                     .addGroup(panSubtemaLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)))
+                .addGap(18, 18, 18)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 198, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -482,6 +482,10 @@ public class Icrear extends javax.swing.JInternalFrame {
         this.txtfPregunta.setText("");
         this.txtfPathImgPregunta.setText("");
         this.btngRespuesta.clearSelection();
+        this.lblImgPreview.setIcon(null);
+        this.lblImgPreview.revalidate();
+        this.lblImgPreviewP.setIcon(null);
+        this.lblImgPreviewP.revalidate();
     }
     
     void setPanelEnabled(JPanel panel, Boolean isEnabled) {
@@ -535,6 +539,8 @@ public class Icrear extends javax.swing.JInternalFrame {
             //Importar imagenes
             File destinoC= new File(path+"/c"+String.valueOf(idSubtema+1)+cImgExt);
             fmain.copy(origenC,destinoC);
+            imgConcepto="images/c"+String.valueOf(idSubtema+1)+cImgExt;
+            
         }
         if(!imgPregunta.equals("")){
             pImgExt=imgPregunta.substring(imgPregunta.lastIndexOf("."));       
@@ -542,12 +548,13 @@ public class Icrear extends javax.swing.JInternalFrame {
             File origenP= new File(imgPregunta);
 
             fmain.copy(origenP, destinoP);
+            imgPregunta="images/p"+String.valueOf(idSubtema+1)+pImgExt;
+        
         }
        
         
         //Path de la imagen accesible desde recursos
-        imgConcepto="images/c"+String.valueOf(idSubtema+1)+cImgExt;
-        imgPregunta="images/p"+String.valueOf(idSubtema+1)+pImgExt;
+        
         
         if(subtema.equals("") || concepto.equals("") || pregunta.equals("")|| respuesta.equals("")){
             JOptionPane.showMessageDialog(null, "Campos Obligatorios Incompletos");
