@@ -50,7 +50,7 @@ public class Icrear extends javax.swing.JInternalFrame {
         btngRespuesta = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         txtfNombreClase = new javax.swing.JTextField();
-        addClase = new javax.swing.JButton();
+        btnAddClase = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         tbpanSubtema = new javax.swing.JTabbedPane();
         panSubtema = new javax.swing.JPanel();
@@ -85,6 +85,8 @@ public class Icrear extends javax.swing.JInternalFrame {
         btnAddTema = new javax.swing.JButton();
         txtfTema = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
+        btnNewClase = new javax.swing.JButton();
+        btnNewSubtema = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -109,10 +111,10 @@ public class Icrear extends javax.swing.JInternalFrame {
 
         jLabel1.setText("Nombre de la Clase");
 
-        addClase.setText("+");
-        addClase.addActionListener(new java.awt.event.ActionListener() {
+        btnAddClase.setText("+");
+        btnAddClase.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addClaseActionPerformed(evt);
+                btnAddClaseActionPerformed(evt);
             }
         });
 
@@ -142,7 +144,7 @@ public class Icrear extends javax.swing.JInternalFrame {
                 .addComponent(txtfPathImgConcepto, javax.swing.GroupLayout.DEFAULT_SIZE, 849, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(241, 241, 241)
+                .addGap(238, 238, 238)
                 .addComponent(lblImgPreview, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -191,7 +193,7 @@ public class Icrear extends javax.swing.JInternalFrame {
                     .addGroup(panSubtemaLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -312,21 +314,21 @@ public class Icrear extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(panEvaluacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 648, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(131, Short.MAX_VALUE))
                     .addGroup(panEvaluacionLayout.createSequentialGroup()
                         .addGap(8, 8, 8)
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panEvaluacionLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnAñadirTema)
-                .addContainerGap())
+                .addComponent(btnAñadirTema))
         );
         panEvaluacionLayout.setVerticalGroup(
             panEvaluacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panEvaluacionLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panEvaluacionLayout.createSequentialGroup()
                 .addGroup(panEvaluacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panEvaluacionLayout.createSequentialGroup()
                         .addGap(64, 64, 64)
@@ -348,9 +350,8 @@ public class Icrear extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(71, 71, 71)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnAñadirTema)
-                .addContainerGap())
+                .addGap(18, 18, 18)
+                .addComponent(btnAñadirTema))
         );
 
         tbpanSubtema.addTab("Evaluación", panEvaluacion);
@@ -359,7 +360,7 @@ public class Icrear extends javax.swing.JInternalFrame {
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1147, Short.MAX_VALUE)
+            .addGap(0, 933, Short.MAX_VALUE)
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -372,11 +373,13 @@ public class Icrear extends javax.swing.JInternalFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tbpanSubtema)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(tbpanSubtema, javax.swing.GroupLayout.PREFERRED_SIZE, 938, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tbpanSubtema, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(tbpanSubtema)
         );
 
         btnAddTema.setText("+");
@@ -391,6 +394,20 @@ public class Icrear extends javax.swing.JInternalFrame {
 
         jLabel7.setText("Tema");
 
+        btnNewClase.setText("New");
+        btnNewClase.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNewClaseActionPerformed(evt);
+            }
+        });
+
+        btnNewSubtema.setText("New");
+        btnNewSubtema.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNewSubtemaActionPerformed(evt);
+            }
+        });
+
         jMenu1.setText("Crear");
         jMenuBar1.add(jMenu1);
 
@@ -404,25 +421,33 @@ public class Icrear extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtfNombreClase)
-                .addGap(18, 18, 18)
-                .addComponent(addClase)
-                .addGap(165, 165, 165))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtfTema, javax.swing.GroupLayout.PREFERRED_SIZE, 532, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 254, Short.MAX_VALUE)
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtfTema, javax.swing.GroupLayout.PREFERRED_SIZE, 503, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtfNombreClase)))
                 .addGap(18, 18, 18)
-                .addComponent(btnAddTema)
-                .addGap(165, 165, 165))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnAddClase)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnNewClase)
+                        .addGap(88, 88, 88))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnAddTema)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnNewSubtema)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -431,12 +456,14 @@ public class Icrear extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtfNombreClase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(addClase))
+                    .addComponent(btnAddClase)
+                    .addComponent(btnNewClase))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtfTema, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
-                    .addComponent(btnAddTema))
+                    .addComponent(btnAddTema)
+                    .addComponent(btnNewSubtema))
                 .addGap(23, 23, 23)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(41, 41, 41))
@@ -548,23 +575,23 @@ public class Icrear extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_btnAddImgConceptoActionPerformed
 
-    private void addClaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addClaseActionPerformed
+    private void btnAddClaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddClaseActionPerformed
         String addClase="insert into clases (nombre_clase) values ('"+ txtfNombreClase.getText() +"')";
         db.setQuery(addClase);
         idClase=fmain.extractColumn("clases","id_clase","WHERE id_clase= (SELECT max(id_clase) FROM clases)");
-        this.addClase.setEnabled(false);
+        this.btnAddClase.setEnabled(false);
         this.txtfNombreClase.setEditable(false);
         this.txtfTema.setEnabled(true);
         this.btnAddTema.setEnabled(true);
                 
-    }//GEN-LAST:event_addClaseActionPerformed
+    }//GEN-LAST:event_btnAddClaseActionPerformed
 
     private void btnAddTemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddTemaActionPerformed
         String tema= this.txtfTema.getText();
         db.setQuery("insert into temas (nombre_tema, id_clase) values('"+ tema +"', "+ idClase+")");
         idTema=fmain.extractColumn("temas","id_tema","WHERE id_tema= (SELECT max(id_tema) FROM temas)");
         this.btnAddTema.setEnabled(false);
-        this.txtfTema.setEditable(false);
+        this.txtfTema.setEnabled(false);
         this.setPanelEnabled(this.panSubtema,true);
         this.setPanelEnabled(this.panEvaluacion,true);
     }//GEN-LAST:event_btnAddTemaActionPerformed
@@ -579,8 +606,7 @@ public class Icrear extends javax.swing.JInternalFrame {
             foto = foto.getScaledInstance(110,110, Image.SCALE_DEFAULT);
             this.lblImgPreviewP.setIcon(new ImageIcon(foto) );
         }
-        
-        
+                
     }//GEN-LAST:event_btnAddImgPreguntaActionPerformed
 
     private void formInternalFrameActivated(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameActivated
@@ -588,13 +614,27 @@ public class Icrear extends javax.swing.JInternalFrame {
         this.setPanelEnabled(this.panEvaluacion,false);
     }//GEN-LAST:event_formInternalFrameActivated
 
+    private void btnNewSubtemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewSubtemaActionPerformed
+        this.limpiartext();
+        this.txtfTema.setEnabled(true);
+        this.btnAddTema.setEnabled(true);
+    }//GEN-LAST:event_btnNewSubtemaActionPerformed
+
+    private void btnNewClaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewClaseActionPerformed
+        this.limpiartext();
+        this.txtfNombreClase.setEnabled(true);
+        this.btnAddClase.setEnabled(true);
+    }//GEN-LAST:event_btnNewClaseActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addClase;
+    private javax.swing.JButton btnAddClase;
     private javax.swing.JButton btnAddImgConcepto;
     private javax.swing.JButton btnAddImgPregunta;
     private javax.swing.JButton btnAddTema;
     private javax.swing.JButton btnAñadirTema;
+    private javax.swing.JButton btnNewClase;
+    private javax.swing.JButton btnNewSubtema;
     private javax.swing.ButtonGroup btngRespuesta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
