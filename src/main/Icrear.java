@@ -11,12 +11,14 @@ package main;
  *
  * @author fr4nk
  */
+import java.awt.Component;
 import java.awt.Image;
 import java.io.File;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import sqlite.Sqlite;
 
 public class Icrear extends javax.swing.JInternalFrame {
@@ -45,11 +47,12 @@ public class Icrear extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btngRespuesta = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         txtfNombreClase = new javax.swing.JTextField();
         addClase = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        tbpanSubtema = new javax.swing.JTabbedPane();
         panSubtema = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtfConcepto = new javax.swing.JTextArea();
@@ -69,19 +72,17 @@ public class Icrear extends javax.swing.JInternalFrame {
         txtfPathImgPregunta = new javax.swing.JTextField();
         lblImgPreviewP = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
-        jRadioButton1 = new javax.swing.JRadioButton();
+        rbtnOpt1 = new javax.swing.JRadioButton();
         txtfOpt1 = new javax.swing.JTextField();
         txtfOpt2 = new javax.swing.JTextField();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        rbtnOpt2 = new javax.swing.JRadioButton();
         txtfOpt3 = new javax.swing.JTextField();
-        jRadioButton3 = new javax.swing.JRadioButton();
+        rbtnOpt3 = new javax.swing.JRadioButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         btnAñadirTema = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
-        btnEditarClase = new javax.swing.JButton();
         btnAddTema = new javax.swing.JButton();
-        btnEditarTema = new javax.swing.JButton();
         txtfTema = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -141,14 +142,14 @@ public class Icrear extends javax.swing.JInternalFrame {
                 .addComponent(txtfPathImgConcepto, javax.swing.GroupLayout.DEFAULT_SIZE, 849, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(257, 257, 257)
+                .addGap(241, 241, 241)
                 .addComponent(lblImgPreview, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(76, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblImgPreview, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -179,24 +180,23 @@ public class Icrear extends javax.swing.JInternalFrame {
         panSubtemaLayout.setVerticalGroup(
             panSubtemaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panSubtemaLayout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addGroup(panSubtemaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(txtfSubtema, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(panSubtemaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panSubtemaLayout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addGroup(panSubtemaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(txtfSubtema, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(59, 59, 59)
-                        .addComponent(jLabel2)
-                        .addGap(124, 124, 124))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panSubtemaLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)))
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(43, 43, 43))
+                        .addComponent(jLabel2))
+                    .addGroup(panSubtemaLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Subtema", panSubtema);
+        tbpanSubtema.addTab("Subtema", panSubtema);
 
         txtfPregunta.setColumns(20);
         txtfPregunta.setRows(5);
@@ -239,11 +239,14 @@ public class Icrear extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        jRadioButton1.setText("Opcion1");
+        btngRespuesta.add(rbtnOpt1);
+        rbtnOpt1.setText("Opcion1");
 
-        jRadioButton2.setText("Opcion2");
+        btngRespuesta.add(rbtnOpt2);
+        rbtnOpt2.setText("Opcion2");
 
-        jRadioButton3.setText("Opcion3");
+        btngRespuesta.add(rbtnOpt3);
+        rbtnOpt3.setText("Opcion3");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -253,15 +256,15 @@ public class Icrear extends javax.swing.JInternalFrame {
                 .addGap(52, 52, 52)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jRadioButton1)
+                        .addComponent(rbtnOpt1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtfOpt1))
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jRadioButton2)
+                        .addComponent(rbtnOpt2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtfOpt2, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jRadioButton3)
+                        .addComponent(rbtnOpt3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtfOpt3, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -271,17 +274,17 @@ public class Icrear extends javax.swing.JInternalFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton1)
+                    .addComponent(rbtnOpt1)
                     .addComponent(txtfOpt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton2)
+                    .addComponent(rbtnOpt2)
                     .addComponent(txtfOpt2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton3)
+                    .addComponent(rbtnOpt3)
                     .addComponent(txtfOpt3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel4.setText("Imagen");
@@ -309,14 +312,13 @@ public class Icrear extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(panEvaluacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 648, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(345, Short.MAX_VALUE))
+                            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(panEvaluacionLayout.createSequentialGroup()
                         .addGap(8, 8, 8)
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panEvaluacionLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnAñadirTema)
@@ -343,15 +345,15 @@ public class Icrear extends javax.swing.JInternalFrame {
                 .addGroup(panEvaluacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panEvaluacionLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(71, 71, 71)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAñadirTema)
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Evaluación", panEvaluacion);
+        tbpanSubtema.addTab("Evaluación", panEvaluacion);
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -361,42 +363,31 @@ public class Icrear extends javax.swing.JInternalFrame {
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 564, Short.MAX_VALUE)
+            .addGap(0, 552, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("+", jPanel7);
+        tbpanSubtema.addTab("+", jPanel7);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(tbpanSubtema)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(tbpanSubtema, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
-        btnEditarClase.setText("Editar");
-        btnEditarClase.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditarClaseActionPerformed(evt);
-            }
-        });
-
         btnAddTema.setText("+");
+        btnAddTema.setEnabled(false);
         btnAddTema.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddTemaActionPerformed(evt);
             }
         });
 
-        btnEditarTema.setText("Editar");
-        btnEditarTema.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditarTemaActionPerformed(evt);
-            }
-        });
+        txtfTema.setEnabled(false);
 
         jLabel7.setText("Tema");
 
@@ -419,9 +410,7 @@ public class Icrear extends javax.swing.JInternalFrame {
                 .addComponent(txtfNombreClase)
                 .addGap(18, 18, 18)
                 .addComponent(addClase)
-                .addGap(18, 18, 18)
-                .addComponent(btnEditarClase)
-                .addGap(71, 71, 71))
+                .addGap(165, 165, 165))
             .addGroup(layout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -433,9 +422,7 @@ public class Icrear extends javax.swing.JInternalFrame {
                 .addComponent(txtfTema, javax.swing.GroupLayout.PREFERRED_SIZE, 532, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnAddTema)
-                .addGap(18, 18, 18)
-                .addComponent(btnEditarTema)
-                .addGap(71, 71, 71))
+                .addGap(165, 165, 165))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -444,14 +431,12 @@ public class Icrear extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtfNombreClase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(addClase)
-                    .addComponent(btnEditarClase))
+                    .addComponent(addClase))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtfTema, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
-                    .addComponent(btnAddTema)
-                    .addComponent(btnEditarTema))
+                    .addComponent(btnAddTema))
                 .addGap(23, 23, 23)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(41, 41, 41))
@@ -461,31 +446,57 @@ public class Icrear extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void limpiartext(){
-             this.txtfConcepto.setText("");
-        this.txtfNombreClase.setText("");
+        this.txtfConcepto.setText("");
         this.txtfOpt1.setText("");
         this.txtfOpt2.setText("");
         this.txtfOpt3.setText("");
         this.txtfPathImgConcepto.setText("");
         this.txtfSubtema.setText("");
-         this.txtfTema.setText("");
-         this.txtfPregunta.setText("");
-          this.txtfPathImgPregunta.setText("");
+        this.txtfPregunta.setText("");
+        this.txtfPathImgPregunta.setText("");
+        this.btngRespuesta.clearSelection();
     }
     
+    void setPanelEnabled(JPanel panel, Boolean isEnabled) {
+        panel.setEnabled(isEnabled);
+
+        Component[] components = panel.getComponents();
+
+        for (Component component : components) {
+            if (component instanceof JPanel) {
+                setPanelEnabled((JPanel) component, isEnabled);
+            }
+            component.setEnabled(isEnabled);
+        }
+    }
     private void btnAñadirTemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAñadirTemaActionPerformed
 //Path carpeta de las imagenes de las clases
         File pathImg = new File("src/main/images/");
         String path = pathImg.getAbsolutePath();
         
         //Extracción de los atributos
+        String respuesta="";
+        String PREGUNTA;
         String subtema= this.txtfSubtema.getText();
         String concepto= this.txtfConcepto.getText();
         String pregunta= this.txtfPregunta.getText();
         String imgConcepto= this.txtfPathImgConcepto.getText();
         String imgPregunta= this.txtfPathImgPregunta.getText();
         Integer idSubtema= Integer.valueOf(fmain.extractColumn("subtemas","id_tema","WHERE id_subtema= (SELECT max(id_subtema) FROM subtemas)"));
+        String opt1= this.txtfOpt1.getText();
+        String opt2= this.txtfOpt2.getText();
+        String opt3= this.txtfOpt3.getText();
+        //Extracción de la respuesta de selección multiple
+        if(this.rbtnOpt1.isSelected()){
+            respuesta="Opt1";
+        }else if(this.rbtnOpt2.isSelected()){
+                respuesta="Opt2";
+        }else if (this.rbtnOpt3.isSelected()){
+            respuesta="Opt3";
+        }
         
+        //Formateo de la pregunta
+        PREGUNTA= pregunta+"\n"+ opt1+"\n"+ opt2+"\n"+opt3;
         
         String cImgExt= null;
         String pImgExt= null;
@@ -510,15 +521,14 @@ public class Icrear extends javax.swing.JInternalFrame {
         //Path de la imagen accesible desde recursos
         imgConcepto="images/c"+String.valueOf(idSubtema+1)+cImgExt;
         imgPregunta="images/p"+String.valueOf(idSubtema+1)+pImgExt;
-        System.out.println("IdTema: "+idTema);
-        if(subtema.equals("") || concepto.equals("") || pregunta.equals("")){
+        
+        if(subtema.equals("") || concepto.equals("") || pregunta.equals("")|| respuesta.equals("")){
             JOptionPane.showMessageDialog(null, "Campos Obligatorios Incompletos");
         }else{
-            String preQuery="insert into subtemas ( id_tema, id_clase, titulo, concepto, pregunta, img_concepto, img_pregunta) values (\'%s\',\'%s\', \'%s\', \'%s\', \'%s\', \'%s\', \'%s\');";
-            String query= String.format(preQuery,idTema, idClase, subtema, concepto, pregunta, imgConcepto, imgPregunta);
-            System.out.println(query);
+            String preQuery="insert into subtemas ( id_tema, id_clase, titulo, concepto, pregunta, img_concepto, img_pregunta, respuesta) values (\'%s\',\'%s\', \'%s\', \'%s\', \'%s\', \'%s\', \'%s\', \'%s\');";
+            String query= String.format(preQuery,idTema, idClase, subtema, concepto, PREGUNTA, imgConcepto, imgPregunta, respuesta);
             db.setQuery(query);
-             JOptionPane.showMessageDialog(null, "Clase Agregada!");
+             JOptionPane.showMessageDialog(null, "Subtema Agregado!");
              limpiartext();
         }
       
@@ -544,11 +554,10 @@ public class Icrear extends javax.swing.JInternalFrame {
         idClase=fmain.extractColumn("clases","id_clase","WHERE id_clase= (SELECT max(id_clase) FROM clases)");
         this.addClase.setEnabled(false);
         this.txtfNombreClase.setEditable(false);
+        this.txtfTema.setEnabled(true);
+        this.btnAddTema.setEnabled(true);
+                
     }//GEN-LAST:event_addClaseActionPerformed
-
-    private void btnEditarClaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarClaseActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEditarClaseActionPerformed
 
     private void btnAddTemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddTemaActionPerformed
         String tema= this.txtfTema.getText();
@@ -556,11 +565,9 @@ public class Icrear extends javax.swing.JInternalFrame {
         idTema=fmain.extractColumn("temas","id_tema","WHERE id_tema= (SELECT max(id_tema) FROM temas)");
         this.btnAddTema.setEnabled(false);
         this.txtfTema.setEditable(false);
+        this.setPanelEnabled(this.panSubtema,true);
+        this.setPanelEnabled(this.panEvaluacion,true);
     }//GEN-LAST:event_btnAddTemaActionPerformed
-
-    private void btnEditarTemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarTemaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEditarTemaActionPerformed
 
     private void btnAddImgPreguntaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddImgPreguntaActionPerformed
         JFileChooser archivo = new JFileChooser();
@@ -577,7 +584,8 @@ public class Icrear extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnAddImgPreguntaActionPerformed
 
     private void formInternalFrameActivated(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameActivated
-        System.out.println("Internal Activado");
+        this.setPanelEnabled(this.panSubtema,false);
+        this.setPanelEnabled(this.panEvaluacion,false);
     }//GEN-LAST:event_formInternalFrameActivated
 
 
@@ -587,8 +595,7 @@ public class Icrear extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnAddImgPregunta;
     private javax.swing.JButton btnAddTema;
     private javax.swing.JButton btnAñadirTema;
-    private javax.swing.JButton btnEditarClase;
-    private javax.swing.JButton btnEditarTema;
+    private javax.swing.ButtonGroup btngRespuesta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -604,16 +611,16 @@ public class Icrear extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lblImgPreview;
     private javax.swing.JLabel lblImgPreviewP;
     private javax.swing.JPanel panEvaluacion;
     private javax.swing.JPanel panSubtema;
+    private javax.swing.JRadioButton rbtnOpt1;
+    private javax.swing.JRadioButton rbtnOpt2;
+    private javax.swing.JRadioButton rbtnOpt3;
+    private javax.swing.JTabbedPane tbpanSubtema;
     private javax.swing.JTextArea txtfConcepto;
     private javax.swing.JTextField txtfNombreClase;
     private javax.swing.JTextField txtfOpt1;

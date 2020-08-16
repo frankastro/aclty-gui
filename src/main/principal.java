@@ -52,10 +52,8 @@ public class principal extends javax.swing.JFrame {
         extractColumns(table, arrCol,tmp, condition );
         int rows = tmp.getRowCount();
         if(rows <=0){
-            System.out.println("Sin data");
             return "0";
         }else{
-            System.out.println("Con data");
             celd= tmp.getValueAt(0,0).toString();
             return celd;
          }
