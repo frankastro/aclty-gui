@@ -66,6 +66,7 @@ public class Iagendar extends javax.swing.JInternalFrame {
             public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
             }
             public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosed(evt);
             }
             public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
             }
@@ -222,9 +223,14 @@ public class Iagendar extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_formInternalFrameOpened
 
     private void btnAgendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgendarActionPerformed
+        String fecha =null;
         SimpleDateFormat Forma = new SimpleDateFormat("dd-MM-yyyy");
-        String fecha = Forma.format(Fecha.getDate());
+        fecha = Forma.format(Fecha.getDate());
         
+        if(fecha.equals(null)){
+            JOptionPane.showMessageDialog(null, "Seleccione Una Fecha Valida");
+            return;
+        }
         idSubtema= fmain.getTBLsubtemas().getValueAt(this.cboxSubtemas.getSelectedIndex(),0).toString();
         
         String preQuery= "INSERT INTO actividades(fecha, id_subtema) VALUES(\'%s\',%s)";
@@ -346,6 +352,10 @@ public class Iagendar extends javax.swing.JInternalFrame {
     private void cboxClasesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxClasesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cboxClasesActionPerformed
+
+    private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formInternalFrameClosed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
