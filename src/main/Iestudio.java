@@ -2,6 +2,7 @@ package main;
 
 import java.awt.Color;
 import java.awt.Image;
+import javax.swing.JOptionPane;
 
 
 /*
@@ -20,18 +21,18 @@ public class Iestudio extends javax.swing.JInternalFrame {
     String imgPregunta;
     String idSubtema;
     principal fmain;
+    String respuesta;
+    
     public Iestudio(principal fmain) {
         this.fmain= fmain;
         //Extraer la imagen del Concepto
         imgConcepto = fmain.getTBLsubtema().getValueAt(0,5).toString();        
         imgPregunta = fmain.getTBLsubtema().getValueAt(0,7).toString();
         
-        System.out.println("ImgConcept=" + imgConcepto +"\n Se detecto como vacía" );
         if(imgConcepto.equals("")){
            imgConcepto="images/default.png";
         }
         
-       System.out.println("ImgPregunta=" + imgPregunta +"\n Se detecto como vacía" );
         if(imgPregunta.equals("")){
              imgPregunta="images/default.png";
 
@@ -61,6 +62,7 @@ public class Iestudio extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btngRespuesta = new javax.swing.ButtonGroup();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -74,6 +76,7 @@ public class Iestudio extends javax.swing.JInternalFrame {
         rbtnOpt1 = new javax.swing.JRadioButton();
         rbtnOpt2 = new javax.swing.JRadioButton();
         rbtnOpt3 = new javax.swing.JRadioButton();
+        jButton1 = new javax.swing.JButton();
 
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
@@ -106,7 +109,7 @@ public class Iestudio extends javax.swing.JInternalFrame {
         );
         panImgConceptLayout.setVerticalGroup(
             panImgConceptLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 195, Short.MAX_VALUE)
+            .addGap(0, 239, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -126,7 +129,7 @@ public class Iestudio extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(45, 45, 45)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
                 .addGap(29, 29, 29)
                 .addComponent(panImgConcept, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(26, 26, 26))
@@ -147,13 +150,16 @@ public class Iestudio extends javax.swing.JInternalFrame {
         );
         pnlImgPregLayout.setVerticalGroup(
             pnlImgPregLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 146, Short.MAX_VALUE)
+            .addGap(0, 155, Short.MAX_VALUE)
         );
 
+        btngRespuesta.add(rbtnOpt1);
         rbtnOpt1.setText("Opcion 1");
 
+        btngRespuesta.add(rbtnOpt2);
         rbtnOpt2.setText("Opcion 2");
 
+        btngRespuesta.add(rbtnOpt3);
         rbtnOpt3.setText("Opcion 3");
 
         javax.swing.GroupLayout panRespuestasLayout = new javax.swing.GroupLayout(panRespuestas);
@@ -179,6 +185,13 @@ public class Iestudio extends javax.swing.JInternalFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
+        jButton1.setText("Comprobar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -193,17 +206,23 @@ public class Iestudio extends javax.swing.JInternalFrame {
                     .addComponent(panRespuestas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane2))
                 .addGap(68, 68, 68))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(49, 49, 49))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlImgPreg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(pnlImgPreg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panRespuestas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addGap(33, 33, 33))
         );
 
         jTabbedPane1.addTab(" ", jPanel2);
@@ -235,15 +254,17 @@ public class Iestudio extends javax.swing.JInternalFrame {
         //Extraer pregunta
         //Eliminar la segunda inicializacion de dataPRegunta
         String dataPregunta= (String)fmain.getTBLsubtema().getValueAt(0,6);
-        dataPregunta="lkjaslkdjflasdfl;asjdfalsd\n"
-                + "opt1;alksjdfla\n"
-                + "opt2lkjalsjdflajsdlfja\n"
-                + "opt3ljljsdlkfasd\n";
+        
+ 
+        
         String lines[] = dataPregunta.split("\\r?\\n");
         String pregunta=lines[0];
         String opt1=lines[1];
         String opt2=lines[2];
         String opt3=lines[3];
+        
+        
+        
         this.txtaPregunta.setText(pregunta);
         this.rbtnOpt1.setText(opt1);
         this.rbtnOpt2.setText(opt2);
@@ -251,8 +272,24 @@ public class Iestudio extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_start
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        //Extraer la respuesta
+        String respuesta= (String)fmain.getTBLsubtema().getValueAt(0,8);
+        if(this.rbtnOpt1.isSelected() && respuesta.equals("Opt1")){
+            JOptionPane.showMessageDialog(null, "Respuesta Correcta");
+        }else if(this.rbtnOpt2.isSelected() && respuesta.equals("Opt2")){
+            JOptionPane.showMessageDialog(null, "Respuesta Correcta");
+        }else if(this.rbtnOpt3.isSelected() && respuesta.equals("Opt3")){
+            JOptionPane.showMessageDialog(null, "Respuesta Correcta");
+        }else{
+            JOptionPane.showMessageDialog(null, "Respuesta Incorrecta");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup btngRespuesta;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

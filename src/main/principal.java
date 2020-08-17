@@ -24,7 +24,7 @@ public class principal extends javax.swing.JFrame {
     
     public Sqlite db;
     public Iagendar fAgendar;
-    public Icrear fDesarrollo;
+    public Icrear fCrear;
     private Iestudio fEstudio;
     
     public JTable getTBLactividades(){
@@ -91,6 +91,7 @@ public class principal extends javax.swing.JFrame {
         scpnActividades = new javax.swing.JScrollPane();
         tblDBactividades = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu3 = new javax.swing.JMenu();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
 
@@ -139,7 +140,7 @@ public class principal extends javax.swing.JFrame {
 
             },
             new String [] {
-                "idSubtema", "idTema", "idClase", "Titulo", "Concepto", "imgConcepto", "Pregunta", "imgPregunta"
+                "idSubtema", "idTema", "idClase", "Titulo", "Concepto", "imgConcepto", "Pregunta", "imgPregunta", "respuesta"
             }
         ));
         jScrollPane4.setViewportView(tblDBsubtema);
@@ -231,6 +232,14 @@ public class principal extends javax.swing.JFrame {
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+
+        jMenu3.setText("Inicio");
+        jMenu3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenu3MousePressed(evt);
+            }
+        });
+        jMenuBar1.add(jMenu3);
 
         jMenu1.setText("Agenda");
         jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -336,18 +345,18 @@ public class principal extends javax.swing.JFrame {
             Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
         }
         //Para cerrar otros internals
-         if(fDesarrollo!=null)
-             this.fDesarrollo.dispose();
+         if(fCrear!=null)
+             this.fCrear.dispose();
     }//GEN-LAST:event_jMenu1MousePressed
 
     private void jMenu2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MousePressed
-        fDesarrollo = new Icrear(db, this);
-        ((javax.swing.plaf.basic.BasicInternalFrameUI)fDesarrollo.getUI()).setNorthPane(null);
-        fDesarrollo.show();
-        this.jDesktopPane1.add(fDesarrollo);
+        fCrear = new Icrear(db, this);
+        ((javax.swing.plaf.basic.BasicInternalFrameUI)fCrear.getUI()).setNorthPane(null);
+        fCrear.show();
+        this.jDesktopPane1.add(fCrear);
         
         try {
-            fDesarrollo.setMaximum(true);
+            fCrear.setMaximum(true);
         } catch (PropertyVetoException ex) { 
             Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -355,6 +364,16 @@ public class principal extends javax.swing.JFrame {
          if(fAgendar!=null)
             this.fAgendar.dispose();
     }//GEN-LAST:event_jMenu2MousePressed
+
+    private void jMenu3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MousePressed
+        if(this.fAgendar!=null)
+            fAgendar.dispose();
+        if(this.fCrear!=null)
+            fCrear.dispose();
+        if(this.fEstudio!=null)
+            fEstudio.dispose();
+        //Pendiente fEditar
+    }//GEN-LAST:event_jMenu3MousePressed
 
     
     public void addInternal(Iestudio fEstudio){
@@ -440,6 +459,7 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JDesktopPane jDesktopPane2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

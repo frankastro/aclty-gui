@@ -4,6 +4,14 @@
   <NonVisualComponents>
     <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
       <SubComponents>
+        <Menu class="javax.swing.JMenu" name="jMenu3">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Inicio"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMenu3MousePressed"/>
+          </Events>
+        </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu1">
           <Properties>
             <Property name="text" type="java.lang.String" value="Agenda"/>
@@ -275,7 +283,7 @@
                         <Component class="javax.swing.JTable" name="tblDBsubtema">
                           <Properties>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                              <Table columnCount="8" rowCount="0">
+                              <Table columnCount="9" rowCount="0">
                                 <Column editable="true" title="idSubtema" type="java.lang.Object"/>
                                 <Column editable="true" title="idTema" type="java.lang.Object"/>
                                 <Column editable="true" title="idClase" type="java.lang.Object"/>
@@ -284,10 +292,16 @@
                                 <Column editable="true" title="imgConcepto" type="java.lang.Object"/>
                                 <Column editable="true" title="Pregunta" type="java.lang.Object"/>
                                 <Column editable="true" title="imgPregunta" type="java.lang.Object"/>
+                                <Column editable="true" title="respuesta" type="java.lang.Object"/>
                               </Table>
                             </Property>
                             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                               <TableColumnModel selectionModel="0">
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
                                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                                   <Title/>
                                   <Editor/>
