@@ -66,6 +66,7 @@ public class Iagendar extends javax.swing.JInternalFrame {
             public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
             }
             public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosed(evt);
             }
             public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
             }
@@ -111,10 +112,20 @@ public class Iagendar extends javax.swing.JInternalFrame {
                 cboxClasesItemStateChanged(evt);
             }
         });
+        cboxClases.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboxClasesActionPerformed(evt);
+            }
+        });
 
         cboxTemas.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cboxTemasItemStateChanged(evt);
+            }
+        });
+        cboxTemas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboxTemasActionPerformed(evt);
             }
         });
 
@@ -212,9 +223,14 @@ public class Iagendar extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_formInternalFrameOpened
 
     private void btnAgendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgendarActionPerformed
+        String fecha =null;
         SimpleDateFormat Forma = new SimpleDateFormat("dd-MM-yyyy");
-        String fecha = Forma.format(Fecha.getDate());
+        fecha = Forma.format(Fecha.getDate());
         
+        if(fecha.equals(null)){
+            JOptionPane.showMessageDialog(null, "Seleccione Una Fecha Valida");
+            return;
+        }
         idSubtema= fmain.getTBLsubtemas().getValueAt(this.cboxSubtemas.getSelectedIndex(),0).toString();
         
         String preQuery= "INSERT INTO actividades(fecha, id_subtema) VALUES(\'%s\',%s)";
@@ -254,30 +270,37 @@ public class Iagendar extends javax.swing.JInternalFrame {
     private void cboxTemasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboxTemasItemStateChanged
         //Limpiar cboxSubtemas (Por si hay subtemas de otros temas) 
         //Limpiar tblSubtemas
-        indexTema= this.cboxTemas.getSelectedIndex();
+        
         this.cboxSubtemas.removeAllItems();
         fmain.getTBLsubtemas().removeAll();
-        if(indexTema!=-1){
+        
+        
+        
             
             //Extraer el id de la clase y del tema seleccionado
             indexClase= this.cboxClases.getSelectedIndex();
+            indexTema= this.cboxTemas.getSelectedIndex();
             
-            String idClase= fmain.getTBLclases().getValueAt(indexClase,0).toString();
-            String idTema= fmain.getTBLtemas().getValueAt(0,0).toString();
-            //Extraer los subtemas de la clase seleccionada
-            String cSubtemas[]={"id_subtema","id_tema", "id_clase","titulo"};
-            fmain.extractColumns("subtemas", cSubtemas, fmain.getTBLsubtemas(), "WHERE id_clase="+idClase + " and id_tema= "+ idTema);
+            
+             if(indexTema!=-1){
+                 String idClase= fmain.getTBLclases().getValueAt(indexClase,0).toString();
+                String idTema= fmain.getTBLtemas().getValueAt(indexTema,0).toString();
+                //Extraer los subtemas de la clase seleccionada
+                String cSubtemas[]={"id_subtema","id_tema", "id_clase","titulo"};
+                fmain.extractColumns("subtemas", cSubtemas, fmain.getTBLsubtemas(), "WHERE id_clase="+idClase + " and id_tema= "+ idTema);
 
-            //Verificar si la clase tiene SubTemas
-            int numSubTemas= fmain.getTBLsubtemas().getRowCount();
-            if(numSubTemas!=0){
-                //Mostrar los subtemas de la clase seleccionada en el cboxTemas
-                for(int c=0; c<numSubTemas; c++){
-                    this.cboxSubtemas.addItem(fmain.getTBLsubtemas().getValueAt(c,3).toString());
-                }
-            }
+                //Verificar si la clase tiene SubTemas
+                int numSubTemas= fmain.getTBLsubtemas().getRowCount();
+                if(numSubTemas!=0){
+                    //Mostrar los subtemas de la clase seleccionada en el cboxTemas
+                    
+                    for(int c=0; c<numSubTemas; c++){
+                        this.cboxSubtemas.addItem(fmain.getTBLsubtemas().getValueAt(c,3).toString());
+                        
+                    }
 
-        }
+                 }
+             }
             
 
     }//GEN-LAST:event_cboxTemasItemStateChanged
@@ -287,7 +310,6 @@ public class Iagendar extends javax.swing.JInternalFrame {
         String colClases[]={"id_clase","nombre_clase"};
         fmain.extractColumns("clases", colClases, fmain.getTBLclases(), "");
         
-        System.out.println("Metodo Internal Activado");
             //Cargar clases al cboxClases
             this.cboxClases.removeAll();
         int cClases= fmain.getTBLclases().getRowCount();
@@ -322,6 +344,18 @@ public class Iagendar extends javax.swing.JInternalFrame {
         
         
     }//GEN-LAST:event_formInternalFrameActivated
+
+    private void cboxTemasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxTemasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboxTemasActionPerformed
+
+    private void cboxClasesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxClasesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboxClasesActionPerformed
+
+    private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formInternalFrameClosed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

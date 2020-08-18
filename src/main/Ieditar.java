@@ -10,6 +10,7 @@ package main;
  *
  * @author NoeOGM
  */
+import java.awt.Image;
 import java.beans.PropertyVetoException;
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -50,43 +51,42 @@ public class Ieditar extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         cboxClases = new javax.swing.JComboBox<>();
         cboxTemas = new javax.swing.JComboBox<>();
         cboxSubtemas = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        tbpanSubtema = new javax.swing.JTabbedPane();
         panSubtema = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        txtfConcepto = new javax.swing.JTextArea();
-        jLabel5 = new javax.swing.JLabel();
+        txtaConcepto = new javax.swing.JTextArea();
+        jLabel9 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         btnAddImgConcepto = new javax.swing.JButton();
         txtfPathImgConcepto = new javax.swing.JTextField();
-        lblImgPreview = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        txtfSubtema = new javax.swing.JTextField();
+        lblImgPreviewConcepto = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        txtfTitulo = new javax.swing.JTextField();
         panEvaluacion = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        txtfPregunta = new javax.swing.JTextArea();
-        jLabel7 = new javax.swing.JLabel();
+        txtaPregunta = new javax.swing.JTextArea();
+        jLabel10 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         btnAddImgPregunta = new javax.swing.JButton();
         txtfPathImgPregunta = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
+        lblImgPreviewPregunta = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        btnAñadirTema1 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
-        jRadioButton1 = new javax.swing.JRadioButton();
+        rbtnOpt1 = new javax.swing.JRadioButton();
         txtfOpt1 = new javax.swing.JTextField();
         txtfOpt2 = new javax.swing.JTextField();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        rbtnOpt2 = new javax.swing.JRadioButton();
         txtfOpt3 = new javax.swing.JTextField();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
-        btnAñadirTema = new javax.swing.JButton();
+        rbtnOpt3 = new javax.swing.JRadioButton();
+        jLabel6 = new javax.swing.JLabel();
 
         setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         setPreferredSize(new java.awt.Dimension(1019, 532));
@@ -121,17 +121,23 @@ public class Ieditar extends javax.swing.JInternalFrame {
             }
         });
 
+        cboxSubtemas.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cboxSubtemasItemStateChanged(evt);
+            }
+        });
+
         jLabel1.setText("Clase");
 
         jLabel2.setText("Temas");
 
         jLabel3.setText("Subtemas");
 
-        txtfConcepto.setColumns(20);
-        txtfConcepto.setRows(5);
-        jScrollPane1.setViewportView(txtfConcepto);
+        txtaConcepto.setColumns(20);
+        txtaConcepto.setRows(5);
+        jScrollPane1.setViewportView(txtaConcepto);
 
-        jLabel5.setText("Concepto");
+        jLabel9.setText("Concepto");
 
         btnAddImgConcepto.setText("Añadir Imagen");
         btnAddImgConcepto.addActionListener(new java.awt.event.ActionListener() {
@@ -146,74 +152,70 @@ public class Ieditar extends javax.swing.JInternalFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+            .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(btnAddImgConcepto)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtfPathImgConcepto, javax.swing.GroupLayout.DEFAULT_SIZE, 436, Short.MAX_VALUE)
-                .addGap(424, 424, 424))
+                .addComponent(txtfPathImgConcepto))
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(237, 237, 237)
-                .addComponent(lblImgPreview, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(244, 244, 244)
+                .addComponent(lblImgPreviewConcepto, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
+                .addGap(232, 232, 232))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblImgPreview, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtfPathImgConcepto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAddImgConcepto)))
+                    .addComponent(btnAddImgConcepto))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblImgPreviewConcepto, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
+                .addGap(29, 29, 29))
         );
 
-        jLabel6.setText("Titulo");
+        jLabel5.setText("Titulo");
 
         javax.swing.GroupLayout panSubtemaLayout = new javax.swing.GroupLayout(panSubtema);
         panSubtema.setLayout(panSubtemaLayout);
         panSubtemaLayout.setHorizontalGroup(
             panSubtemaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panSubtemaLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addGap(58, 58, 58)
                 .addGroup(panSubtemaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel5))
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panSubtemaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(panSubtemaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 658, Short.MAX_VALUE)
-                        .addComponent(txtfSubtema)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1)
+                    .addComponent(txtfTitulo))
+                .addGap(76, 76, 76))
         );
         panSubtemaLayout.setVerticalGroup(
             panSubtemaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panSubtemaLayout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addGroup(panSubtemaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(txtfTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(panSubtemaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panSubtemaLayout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addGroup(panSubtemaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(txtfSubtema, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(59, 59, 59)
-                        .addComponent(jLabel5)
-                        .addGap(124, 124, 124))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panSubtemaLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)))
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 156, Short.MAX_VALUE)
-                .addGap(43, 43, 43))
+                        .addComponent(jLabel9))
+                    .addGroup(panSubtemaLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Subtema", panSubtema);
+        tbpanSubtema.addTab("Subtema", panSubtema);
 
-        txtfPregunta.setColumns(20);
-        txtfPregunta.setRows(5);
-        jScrollPane2.setViewportView(txtfPregunta);
+        txtaPregunta.setColumns(20);
+        txtaPregunta.setRows(5);
+        jScrollPane2.setViewportView(txtaPregunta);
 
-        jLabel7.setText("Pregunta");
+        jLabel10.setText("Pregunta");
 
         btnAddImgPregunta.setText("Añadir Imagen");
         btnAddImgPregunta.addActionListener(new java.awt.event.ActionListener() {
@@ -224,193 +226,173 @@ public class Ieditar extends javax.swing.JInternalFrame {
 
         txtfPathImgPregunta.setEditable(false);
 
+        jLabel4.setText("Imagen");
+
+        btnAñadirTema1.setText("Añadir SubTema");
+        btnAñadirTema1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAñadirTema1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnAddImgPregunta)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtfPathImgPregunta, javax.swing.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addGap(209, 209, 209))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                                .addComponent(btnAddImgPregunta)
+                                .addGap(36, 36, 36)))
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addComponent(txtfPathImgPregunta))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGap(95, 95, 95)
+                                .addComponent(lblImgPreviewPregunta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(368, 368, 368)
+                        .addComponent(btnAñadirTema1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(345, 345, 345))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(44, 44, 44)
+                .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAddImgPregunta)
                     .addComponent(txtfPathImgPregunta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(66, 66, 66)
+                        .addComponent(jLabel4))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(lblImgPreviewPregunta, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)))
+                .addGap(23, 23, 23)
+                .addComponent(btnAñadirTema1)
+                .addContainerGap())
         );
 
-        jButton4.setText("jButton3");
+        buttonGroup1.add(rbtnOpt1);
+        rbtnOpt1.setText("Opcion1");
 
-        jRadioButton1.setText("Opcion1");
+        buttonGroup1.add(rbtnOpt2);
+        rbtnOpt2.setText("Opcion2");
 
-        jRadioButton2.setText("Opcion2");
+        buttonGroup1.add(rbtnOpt3);
+        rbtnOpt3.setText("Opcion3");
 
-        jRadioButton3.setText("Opcion3");
+        jLabel6.setText("Respuesta");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(52, 52, 52)
+                .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jRadioButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtfOpt1))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jRadioButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtfOpt2, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jRadioButton3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtfOpt3, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)))
-                .addContainerGap())
+                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel6Layout.createSequentialGroup()
+                            .addComponent(jLabel6)
+                            .addGap(42, 42, 42)
+                            .addComponent(rbtnOpt2))
+                        .addComponent(rbtnOpt1, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(rbtnOpt3, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtfOpt3)
+                    .addComponent(txtfOpt2)
+                    .addComponent(txtfOpt1))
+                .addGap(30, 30, 30))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton1)
-                    .addComponent(txtfOpt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton2)
-                    .addComponent(txtfOpt2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton3)
-                    .addComponent(txtfOpt3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(rbtnOpt1)
+                            .addComponent(txtfOpt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(23, 23, 23)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(rbtnOpt2)
+                            .addComponent(txtfOpt2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(23, 23, 23)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtfOpt3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(rbtnOpt3)))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(56, 56, 56)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        jLabel4.setText("Imagen");
-
-        jLabel8.setText("Respuesta");
 
         javax.swing.GroupLayout panEvaluacionLayout = new javax.swing.GroupLayout(panEvaluacion);
         panEvaluacion.setLayout(panEvaluacionLayout);
         panEvaluacionLayout.setHorizontalGroup(
             panEvaluacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panEvaluacionLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton4)
-                .addContainerGap())
             .addGroup(panEvaluacionLayout.createSequentialGroup()
-                .addGap(55, 55, 55)
-                .addGroup(panEvaluacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8)
-                    .addGroup(panEvaluacionLayout.createSequentialGroup()
-                        .addGroup(panEvaluacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel7))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(panEvaluacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 648, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(345, Short.MAX_VALUE))
+                .addGap(28, 28, 28)
+                .addComponent(jLabel10)
+                .addGap(39, 39, 39)
+                .addComponent(jScrollPane2)
+                .addGap(34, 34, 34))
+            .addGroup(panEvaluacionLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(panEvaluacionLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(24, 24, 24))
         );
         panEvaluacionLayout.setVerticalGroup(
             panEvaluacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panEvaluacionLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panEvaluacionLayout.createSequentialGroup()
                 .addGroup(panEvaluacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panEvaluacionLayout.createSequentialGroup()
                         .addGap(64, 64, 64)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panEvaluacionLayout.createSequentialGroup()
-                        .addGap(83, 83, 83)
-                        .addComponent(jLabel7)))
-                .addGroup(panEvaluacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panEvaluacionLayout.createSequentialGroup()
-                        .addGap(85, 85, 85)
-                        .addComponent(jLabel4))
-                    .addGroup(panEvaluacionLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panEvaluacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(panEvaluacionLayout.createSequentialGroup()
-                        .addGap(57, 57, 57)
-                        .addComponent(jLabel8)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(77, 77, 77)
-                .addComponent(jButton4)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panEvaluacionLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel10)
+                        .addGap(39, 39, 39)))
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Evaluación", panEvaluacion);
-
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1147, Short.MAX_VALUE)
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 452, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("+", jPanel7);
-
-        btnAñadirTema.setText("Añadir Tema");
-        btnAñadirTema.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAñadirTemaActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnAñadirTema)
-                .addGap(90, 90, 90))
-            .addComponent(jTabbedPane1)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnAñadirTema)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
+        tbpanSubtema.addTab("Evaluación", panEvaluacion);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(68, 68, 68)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tbpanSubtema)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(68, 68, 68)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cboxSubtemas, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cboxSubtemas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cboxTemas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cboxClases, 0, 1013, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1074, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                            .addComponent(cboxClases, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(49, 49, 49))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -427,9 +409,9 @@ public class Ieditar extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cboxSubtemas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39))
+                .addGap(18, 18, 18)
+                .addComponent(tbpanSubtema)
+                .addContainerGap())
         );
 
         pack();
@@ -465,6 +447,8 @@ public class Ieditar extends javax.swing.JInternalFrame {
     private void cboxTemasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboxTemasItemStateChanged
         //Limpiar cboxSubtemas (Por si hay subtemas de otros temas) 
         //Limpiar tblSubtemas
+
+
         indexTema= this.cboxTemas.getSelectedIndex();
         this.cboxSubtemas.removeAllItems();
         fmain.getTBLsubtemas().removeAll();
@@ -474,7 +458,7 @@ public class Ieditar extends javax.swing.JInternalFrame {
             indexClase= this.cboxClases.getSelectedIndex();
             
             String idClase= fmain.getTBLclases().getValueAt(indexClase,0).toString();
-            String idTema= fmain.getTBLtemas().getValueAt(0,0).toString();
+            String idTema= fmain.getTBLtemas().getValueAt(indexTema,0).toString();
             //Extraer los subtemas de la clase seleccionada
             String cSubtemas[]={"id_subtema","id_tema", "id_clase","titulo"};
             fmain.extractColumns("subtemas", cSubtemas, fmain.getTBLsubtemas(), "WHERE id_clase="+idClase + " and id_tema= "+ idTema);
@@ -489,7 +473,8 @@ public class Ieditar extends javax.swing.JInternalFrame {
             }
 
         }
-            
+               
+
 
     }//GEN-LAST:event_cboxTemasItemStateChanged
 
@@ -534,49 +519,54 @@ public class Ieditar extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_formInternalFrameActivated
 
-    private void btnAddImgConceptoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddImgConceptoActionPerformed
-        ImageIcon preview= new ImageIcon("images/p11.jpg");
-        String imagen;
-        JFileChooser chooser = new JFileChooser();
-        chooser.showOpenDialog(null);
-        File f = chooser.getSelectedFile();
-        imagen = f.getAbsolutePath();
-        this.txtfPathImgConcepto.setText(imagen);
-        this.lblImgPreview.setIcon(preview);
-    }//GEN-LAST:event_btnAddImgConceptoActionPerformed
-
     private void btnAddImgPreguntaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddImgPreguntaActionPerformed
-        String imagen;
-        JFileChooser chooser = new JFileChooser();
-        chooser.showOpenDialog(null);
-        File f = chooser.getSelectedFile();
-        imagen = f.getAbsolutePath();
-        this.txtfPathImgPregunta.setText(imagen);
+        JFileChooser archivo = new JFileChooser();
+        int ventana = archivo.showOpenDialog(null);
+        if(ventana == JFileChooser.APPROVE_OPTION){
+            File imagen = archivo.getSelectedFile();
+            this.txtfPathImgPregunta.setText(String.valueOf(imagen));
+            Image foto = getToolkit().getImage(txtfPathImgPregunta.getText());
+            foto = foto.getScaledInstance(110,110, Image.SCALE_DEFAULT);
+            this.lblImgPreviewPregunta.setIcon(new ImageIcon(foto) );
+        }
     }//GEN-LAST:event_btnAddImgPreguntaActionPerformed
 
-        private void limpiartext(){
-             this.txtfConcepto.setText("");
-        this.txtfOpt1.setText("");
-        this.txtfOpt2.setText("");
-        this.txtfOpt3.setText("");
-        this.txtfPathImgConcepto.setText("");
-        this.txtfSubtema.setText("");
-         this.txtfPregunta.setText("");
-          this.txtfPathImgPregunta.setText("");
-    }
-    
-    private void btnAñadirTemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAñadirTemaActionPerformed
-        //Path carpeta de las imagenes de las clases
+    private void btnAñadirTema1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAñadirTema1ActionPerformed
+        int indexTema =this.cboxTemas.getSelectedIndex();
+        int indexClase=this.cboxClases.getSelectedIndex();
+        System.out.println();
+        System.out.println(indexClase);
+        System.out.println(indexTema);
+        System.out.println();
+        String idTema= fmain.getTBLtemas().getValueAt(indexTema,0).toString();
+        String idClase = fmain.getTBLclases().getValueAt(indexClase,0).toString();
+//Path carpeta de las imagenes de las clases
         File pathImg = new File("src/main/images/");
         String path = pathImg.getAbsolutePath();
 
         //Extracción de los atributos
-        String subtema= this.txtfSubtema.getText();
-        String concepto= this.txtfConcepto.getText();
-        String pregunta= this.txtfPregunta.getText();
+        String respuesta="";
+        String PREGUNTA;
+        String subtema= this.txtfTitulo.getText();
+        String concepto= this.txtaConcepto.getText();
+        String pregunta= this.txtaPregunta.getText();
         String imgConcepto= this.txtfPathImgConcepto.getText();
         String imgPregunta= this.txtfPathImgPregunta.getText();
-        int idSubtema= Integer.valueOf(fmain.extractColumn("subtemas","id_tema","WHERE id_subtema= (SELECT max(id_subtema) FROM subtemas)"));
+        String idSubtema= fmain.getTBLsubtema().getValueAt(0,0).toString();
+        String opt1= this.txtfOpt1.getText();
+        String opt2= this.txtfOpt2.getText();
+        String opt3= this.txtfOpt3.getText();
+        //Extracción de la respuesta de selección multiple
+        if(this.rbtnOpt1.isSelected()){
+            respuesta="Opt1";
+        }else if(this.rbtnOpt2.isSelected()){
+            respuesta="Opt2";
+        }else if (this.rbtnOpt3.isSelected()){
+            respuesta="Opt3";
+        }
+
+        //Formateo de la pregunta
+        PREGUNTA= pregunta+"\n"+ opt1+"\n"+ opt2+"\n"+opt3;
 
         String cImgExt= null;
         String pImgExt= null;
@@ -586,72 +576,180 @@ public class Ieditar extends javax.swing.JInternalFrame {
             //Formatear cadena para extraer la extension de imgConcepto e imgPregunta
             cImgExt= imgConcepto.substring(imgConcepto.lastIndexOf("."));
             //Importar imagenes
-            File destinoC= new File(path+"/c"+String.valueOf(idSubtema+1)+cImgExt);
+            File destinoC= new File(path+"/c"+idSubtema+cImgExt);
             fmain.copy(origenC,destinoC);
+            imgConcepto="images/c"+idSubtema+cImgExt;
+
         }
         if(!imgPregunta.equals("")){
             pImgExt=imgPregunta.substring(imgPregunta.lastIndexOf("."));
-            File destinoP= new File(path+"/p"+String.valueOf(idSubtema+1)+pImgExt);
+            File destinoP= new File(path+"/p"+idSubtema+pImgExt);
             File origenP= new File(imgPregunta);
 
             fmain.copy(origenP, destinoP);
+            imgPregunta="images/p"+idSubtema+pImgExt;
+
         }
 
         //Path de la imagen accesible desde recursos
-        imgConcepto="images/c"+String.valueOf(idSubtema+1)+cImgExt;
-        imgPregunta="images/p"+String.valueOf(idSubtema+1)+pImgExt;
 
-        if(subtema.equals("") || concepto.equals("") || pregunta.equals("")){
+        if(subtema.equals("") || concepto.equals("") || pregunta.equals("")|| respuesta.equals("")){
             JOptionPane.showMessageDialog(null, "Campos Obligatorios Incompletos");
         }else{
-            String preQuery="insert into subtemas ( id_tema, id_clase, titulo, concepto, pregunta, img_concepto, img_pregunta) values (\'%s\',\'%s\', \'%s\', \'%s\', \'%s\', \'%s\', \'%s\');";
-            String query= String.format(preQuery,idTema, idClase, subtema, concepto, pregunta, imgConcepto, imgPregunta);
-            db.setQuery(query );
-            JOptionPane.showMessageDialog(null, "Clase Agregada!");
+            String arrPreQuery[]={
+                                "update subtemas set id_clase= %s where id_subtema =%s;",
+                                "update subtemas set id_tema= %s where id_subtema =%s;",
+                                "update subtemas set titulo= \'%s\' where id_subtema =%s;",
+                                "update subtemas set concepto= \'%s\' where id_subtema =%s;",
+                                "update subtemas set img_concepto= \'%s\' where id_subtema =%s;",
+                                "update subtemas set pregunta= \'%s\' where id_subtema =%s;",
+                                "update subtemas set img_pregunta= \'%s\' where id_subtema =%s;",
+                                "update subtemas set respuesta= \'%s\' where id_subtema =%s;"
+                               };
+            String arrValues[]={idClase, idTema,subtema, concepto, imgConcepto, PREGUNTA, imgPregunta,respuesta
+            };
+        
+            for(int c=0; c<arrPreQuery.length; c++){
+            String query= String.format(arrPreQuery[c],arrValues[c], idSubtema);
+            System.out.println(query);
+            db.setQuery(query);
+        }
+//            String query= String.format(preQuery,idTema, idClase, subtema, concepto, PREGUNTA, imgConcepto, imgPregunta, respuesta);
+//            
+            JOptionPane.showMessageDialog(null, "Subtema Agregado!");
             limpiartext();
         }
+    }//GEN-LAST:event_btnAñadirTema1ActionPerformed
 
-    }//GEN-LAST:event_btnAñadirTemaActionPerformed
+    private void btnAddImgConceptoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddImgConceptoActionPerformed
 
+        JFileChooser archivo = new JFileChooser();
+        int ventana = archivo.showOpenDialog(null);
+        if(ventana == JFileChooser.APPROVE_OPTION){
+            File imagen = archivo.getSelectedFile();
+            this.txtfPathImgConcepto.setText(String.valueOf(imagen));
+            Image foto = getToolkit().getImage(txtfPathImgConcepto.getText());
+            foto = foto.getScaledInstance(110,110, Image.SCALE_DEFAULT);
+            this.lblImgPreviewConcepto.setIcon(new ImageIcon(foto) );
+        }
+    }//GEN-LAST:event_btnAddImgConceptoActionPerformed
+
+    private void cboxSubtemasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboxSubtemasItemStateChanged
+        //Limpiar Componentes
+        limpiartext();
+        //Cargando los datos del tema a estudiar
+        //Buscando los datos por id del tema a estudiar
+        int indexSubtema= this.cboxSubtemas.getSelectedIndex();
+        if(indexSubtema==-1){
+            return;
+        }
+        String actIdSubtema= fmain.getTBLsubtemas().getValueAt(indexSubtema, 0).toString();
+        //Rellenando los datos del subtema en la tblSubtema
+        String columns[]={"*"};
+        fmain.extractColumns("subtemas", columns, fmain.getTBLsubtema(),"WHERE id_subtema="+actIdSubtema);
+        
+        
+    
+    //Extraer titulo    
+    txtfTitulo.setText((String)fmain.getTBLsubtema().getValueAt(0,3));
+    //Extraer el concepto
+    txtaConcepto.setText((String)fmain.getTBLsubtema().getValueAt(0,4));
+        
+        //Extraer pregunta
+        String dataPregunta= (String)fmain.getTBLsubtema().getValueAt(0,6);
+        String lines[] = dataPregunta.split("\\r?\\n");
+        if(lines.length==4){
+            String pregunta=lines[0];
+        String opt1=lines[1];
+        String opt2=lines[2];
+        String opt3=lines[3];
+        this.txtaPregunta.setText(pregunta);
+        this.txtfOpt1.setText(opt1);
+        this.txtfOpt2.setText(opt2);
+        this.txtfOpt3.setText(opt3);
+        }
+        
+        
+        //Extraer La Respuesta
+        String respuesta = fmain.getTBLsubtema().getValueAt(0,8).toString();
+        if(respuesta.equals("Opt1"))
+            this.rbtnOpt1.setSelected(true);
+        else if(respuesta.equals("Opt2"))
+            this.rbtnOpt2.setSelected(true);
+        else if(respuesta.equals("Opt3"))
+            this.rbtnOpt3.setSelected(true);
+        
+        //Extraer path imagen y mostrar
+        String pathImgConcept= fmain.getTBLsubtema().getValueAt(0,5).toString();
+        String pathImgPreg= fmain.getTBLsubtema().getValueAt(0,7).toString();
+        
+        //MOSTRAR IMGS
+        String strFullPathC= null, strFullPathP=null;
+            File fullPathC= new File("src/main/"+pathImgConcept);
+            File fullPathP= new File("src/main/"+pathImgPreg);
+            strFullPathC= fullPathC.getAbsolutePath();
+            strFullPathP= fullPathP.getAbsolutePath();
+            
+            Image fotoConcept = getToolkit().getImage(strFullPathC);
+            fotoConcept = fotoConcept.getScaledInstance(110,110, Image.SCALE_DEFAULT);
+            this.lblImgPreviewConcepto.setIcon(new ImageIcon(fotoConcept) );
+            
+            Image fotoPreg = getToolkit().getImage(strFullPathP);
+            fotoPreg = fotoPreg.getScaledInstance(110,110, Image.SCALE_DEFAULT);
+            this.lblImgPreviewPregunta.setIcon(new ImageIcon(fotoPreg) );
+//        this.txtfPathImgConcepto.setText(strFullPathC);
+//        this.txtfPathImgPregunta.setText(strFullPathP);
+    }//GEN-LAST:event_cboxSubtemasItemStateChanged
+
+        private void limpiartext(){
+             this.txtaConcepto.setText("");
+        this.txtfOpt1.setText("");
+        this.txtfOpt2.setText("");
+        this.txtfOpt3.setText("");
+        this.txtfPathImgConcepto.setText("");
+        this.txtfTitulo.setText("");
+         this.txtaPregunta.setText("");
+          this.txtfPathImgPregunta.setText("");
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddImgConcepto;
     private javax.swing.JButton btnAddImgPregunta;
-    private javax.swing.JButton btnAñadirTema;
+    private javax.swing.JButton btnAñadirTema1;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cboxClases;
     private javax.swing.JComboBox<String> cboxSubtemas;
     private javax.swing.JComboBox<String> cboxTemas;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JLabel lblImgPreview;
+    private javax.swing.JLabel lblImgPreviewConcepto;
+    private javax.swing.JLabel lblImgPreviewPregunta;
     private javax.swing.JPanel panEvaluacion;
     private javax.swing.JPanel panSubtema;
-    private javax.swing.JTextArea txtfConcepto;
+    private javax.swing.JRadioButton rbtnOpt1;
+    private javax.swing.JRadioButton rbtnOpt2;
+    private javax.swing.JRadioButton rbtnOpt3;
+    private javax.swing.JTabbedPane tbpanSubtema;
+    private javax.swing.JTextArea txtaConcepto;
+    private javax.swing.JTextArea txtaPregunta;
     private javax.swing.JTextField txtfOpt1;
     private javax.swing.JTextField txtfOpt2;
     private javax.swing.JTextField txtfOpt3;
     private javax.swing.JTextField txtfPathImgConcepto;
     private javax.swing.JTextField txtfPathImgPregunta;
-    private javax.swing.JTextArea txtfPregunta;
-    private javax.swing.JTextField txtfSubtema;
+    private javax.swing.JTextField txtfTitulo;
     // End of variables declaration//GEN-END:variables
 }
 
