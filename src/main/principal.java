@@ -12,6 +12,7 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JInternalFrame;
 import javax.swing.JTable;
 import net.proteanit.sql.DbUtils;
 import sqlite.Sqlite;
@@ -23,9 +24,10 @@ import sqlite.Sqlite;
 public class principal extends javax.swing.JFrame {
     
     public Sqlite db;
-    public Iagendar fAgendar;
-    public Icrear fCrear;
-    private Iestudio fEstudio;
+    static Iagendar fAgendar;
+    static Icrear fCrear;
+    static Iestudio fEstudio;
+    static Ieditar fEditar;
     
     public JTable getTBLactividades(){
         return tblDBactividades;
@@ -91,9 +93,10 @@ public class principal extends javax.swing.JFrame {
         scpnActividades = new javax.swing.JScrollPane();
         tblDBactividades = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu3 = new javax.swing.JMenu();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        mnuInicio = new javax.swing.JMenu();
+        mnuCrear = new javax.swing.JMenu();
+        mnuEditar = new javax.swing.JMenu();
+        mnuAgenda = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -233,29 +236,37 @@ public class principal extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jMenu3.setText("Inicio");
-        jMenu3.addMouseListener(new java.awt.event.MouseAdapter() {
+        mnuInicio.setText("Inicio");
+        mnuInicio.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jMenu3MousePressed(evt);
+                mnuInicioMousePressed(evt);
             }
         });
-        jMenuBar1.add(jMenu3);
+        jMenuBar1.add(mnuInicio);
 
-        jMenu1.setText("Agenda");
-        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+        mnuCrear.setText("Crear");
+        mnuCrear.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jMenu1MousePressed(evt);
+                mnuCrearMousePressed(evt);
             }
         });
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(mnuCrear);
 
-        jMenu2.setText("Crear");
-        jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
+        mnuEditar.setText("Editar");
+        mnuEditar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jMenu2MousePressed(evt);
+                mnuEditarMousePressed(evt);
             }
         });
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(mnuEditar);
+
+        mnuAgenda.setText("Agenda");
+        mnuAgenda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                mnuAgendaMousePressed(evt);
+            }
+        });
+        jMenuBar1.add(mnuAgenda);
 
         setJMenuBar(jMenuBar1);
 
@@ -331,7 +342,7 @@ public class principal extends javax.swing.JFrame {
     }
     
     
-    private void jMenu1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MousePressed
+    private void mnuAgendaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnuAgendaMousePressed
 //        String clases[][]=extractColumns("clases",this.tblDBclases);
 
         fAgendar = new Iagendar(this, db);
@@ -345,11 +356,10 @@ public class principal extends javax.swing.JFrame {
             Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
         }
         //Para cerrar otros internals
-         if(fCrear!=null)
-             this.fCrear.dispose();
-    }//GEN-LAST:event_jMenu1MousePressed
+         closeWindows(fAgendar);
+    }//GEN-LAST:event_mnuAgendaMousePressed
 
-    private void jMenu2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MousePressed
+    private void mnuCrearMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnuCrearMousePressed
         fCrear = new Icrear(db, this);
         ((javax.swing.plaf.basic.BasicInternalFrameUI)fCrear.getUI()).setNorthPane(null);
         fCrear.show();
@@ -361,19 +371,49 @@ public class principal extends javax.swing.JFrame {
             Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
         }
 //        Para cerrar otros internals
-         if(fAgendar!=null)
-            this.fAgendar.dispose();
-    }//GEN-LAST:event_jMenu2MousePressed
-
-    private void jMenu3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MousePressed
-        if(this.fAgendar!=null)
+         closeWindows(fCrear);
+    }//GEN-LAST:event_mnuCrearMousePressed
+    public void closeWindows(JInternalFrame window){
+        if(fAgendar!=null && fAgendar!=window)
             fAgendar.dispose();
-        if(this.fCrear!=null)
+        if(fCrear!=null && fCrear!=window)
+            fCrear.dispose();
+        if(this.fEstudio!=null && fEstudio!=window)
+            fEstudio.dispose();
+        if(fEditar!=null && fEditar!=window)
+            fEditar.dispose();
+        
+    }
+    public void closeWindows(){
+        if(fAgendar!=null)
+            fAgendar.dispose();
+        if(fCrear!=null )
             fCrear.dispose();
         if(this.fEstudio!=null)
             fEstudio.dispose();
-        //Pendiente fEditar
-    }//GEN-LAST:event_jMenu3MousePressed
+        if(fEditar!=null)
+            fEditar.dispose();
+        
+    }
+    private void mnuInicioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnuInicioMousePressed
+        closeWindows();
+    }//GEN-LAST:event_mnuInicioMousePressed
+
+    private void mnuEditarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnuEditarMousePressed
+        fEditar = new Ieditar(this, db);
+        
+        ((javax.swing.plaf.basic.BasicInternalFrameUI)fEditar.getUI()).setNorthPane(null);
+        fEditar.show();
+        this.jDesktopPane1.add(fEditar);
+        
+        try {
+            fEditar.setMaximum(true);
+        } catch (PropertyVetoException ex) { 
+            Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+//        Para cerrar otros internals
+         closeWindows(fEditar);
+    }//GEN-LAST:event_mnuEditarMousePressed
 
     
     public void addInternal(Iestudio fEstudio){
@@ -457,14 +497,15 @@ public class principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JDesktopPane jDesktopPane2;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JMenu mnuAgenda;
+    private javax.swing.JMenu mnuCrear;
+    private javax.swing.JMenu mnuEditar;
+    private javax.swing.JMenu mnuInicio;
     private javax.swing.JScrollPane scpnActividades;
     private javax.swing.JScrollPane scpnClases;
     private javax.swing.JScrollPane scpnTemas;

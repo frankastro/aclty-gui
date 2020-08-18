@@ -258,17 +258,17 @@ public class Iestudio extends javax.swing.JInternalFrame {
  
         
         String lines[] = dataPregunta.split("\\r?\\n");
-        String pregunta=lines[0];
+        if(lines.length==4){
+            String pregunta=lines[0];
         String opt1=lines[1];
         String opt2=lines[2];
         String opt3=lines[3];
-        
-        
-        
-        this.txtaPregunta.setText(pregunta);
+          this.txtaPregunta.setText(pregunta);
         this.rbtnOpt1.setText(opt1);
         this.rbtnOpt2.setText(opt2);
         this.rbtnOpt3.setText(opt3);
+        }
+        
 
     }//GEN-LAST:event_start
 
