@@ -81,7 +81,7 @@ public class principal extends javax.swing.JFrame {
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jPanel1 = new javax.swing.JPanel();
         jDesktopPane2 = new javax.swing.JDesktopPane();
-        jPanel2 = new javax.swing.JPanel();
+        jPanel2 = new background("Fondo_Principal.png");
         scpnTemas = new javax.swing.JScrollPane();
         tblDBtemas = new javax.swing.JTable();
         scpnClases = new javax.swing.JScrollPane();
